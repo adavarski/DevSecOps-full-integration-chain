@@ -52,9 +52,9 @@ Note. k8s environment (development: minikube/production: AWS-KOPS)
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/infrastructure-aws.png?raw=true" width="550">
 
-- Infrastructure: k8s-minikube (k8s development)
-
 - Infrastructure: k8s-AWS-KOPS (k8s production)
+- 
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/infrastructure-k8s-simple.png?raw=true" width="550">
 
 
 ### Choice and description of tools
@@ -128,6 +128,10 @@ Continuous Delivery on the **”Master”** branch:
 Workflow DevSecOps (production: AWS-EC2) :
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/workflow.png?raw=true" width="900">
+
+Workflow DevSecOps (production: AWS-k8s-KOPS) :
+
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/workflow-k8s.png?raw=true" width="900">
 
 ------------
 
