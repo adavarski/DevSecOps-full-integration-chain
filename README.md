@@ -125,11 +125,11 @@ Continuous Delivery on the **”Master”** branch:
 
 #### Workflow Diagram
 ------------
-Workflow DevSecOps (production: AWS-EC2) :
+- Workflow DevSecOps (production: AWS-EC2) :
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/workflow.png?raw=true" width="900">
 
-Workflow DevSecOps (production: AWS-k8s-KOPS) :
+- Workflow DevSecOps (production: AWS-k8s-KOPS) :
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/workflow-k8s.png?raw=true" width="900">
 
