@@ -4,6 +4,18 @@
 
 + Ansible roles & playbooks (AWS/Vagrant)
 
+[ansible roles & playbooks](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/1-ansible-aws-infra) for Vagrant environment
+[ansible roles & playbooks](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/2-ansible-vagrant-infra) for Vagrant environment
+
+- Deployment Infrastructure
+- Install Prerequiest
+- Set Environment Build
+- Scan and Push atrtifact
+- Deploy Application in preproduction
+- Deploy Application in production
+
+
+
 + DevSecOps pipelines:
   + OWASP Dependency-Check script for DevSecOps pipelines (react, python, node, etc.)
   + Docker Bandit SAST (Static Application Security Testing) for Python projects and DevSecOps pipelines (python)
