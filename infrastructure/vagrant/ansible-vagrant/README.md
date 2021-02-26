@@ -1,4 +1,4 @@
-### [ansible roles & playbooks](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/ansible-vagrant) for Vagrant environment
+### [ansible roles & playbooks](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/2-ansible-vagrant-infra) for Vagrant environment
 
 - Deployment Infrastructure
 - Install Prerequiest
