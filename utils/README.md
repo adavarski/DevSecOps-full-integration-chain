@@ -11,20 +11,24 @@
   + Deploy Application in production
 
 
-+ Ansible DevOps services/tools
++ [Ansible DevOps services/tools](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/3-ansible-devops-utils)
   + GitLab 
   + Jenkins
   + Ansible Tower
 
-+ Ansible DevSecOps services/tools
++ [Ansible DevSecOps general services/tools](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/4-ansible-devsecops-general-utils)
 
   + Automating Web Application Security Testing Using OWASP ZAP
   + Vulnerability Scanning with Nessus
   + Security Hardening for Applications and Networks
-  + Continuous Security Scanning for Docker Containers
 
-+ Log Monitoring and Serverless Automated Defense (Elastic Stack in AWS)
++ [Ansible DevSecOps continuous security scanning for docker containers services/tools](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/5-ansible-devsecops-docker-utils)
 
+
++ [Ansible DevSecOps AWS security audit/scanning services/tools](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/6-ansible-devsecops-aws-utils)
+
+
++ [Log Monitoring and Serverless Automated Defense (Elastic Stack in AWS)](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/7-ansible-log-monitoring-elk-aws-serverless-utils)
 
 
 + [DevSecOps Jenkins pipelines (docker based)](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/8-jenkins-docker-utils)
