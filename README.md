@@ -52,7 +52,7 @@ Note. k8s environment (development: minikube/production: AWS-KOPS)
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/infrastructure-aws.png?raw=true" width="550">
 
-- Infrastructure: k8s-AWS-KOPS (k8s)
+- Infrastructure: k8s (AWS-k8s-KOPS)
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/pictures/infrastructure-k8s-simple.png?raw=true" width="550">
 
