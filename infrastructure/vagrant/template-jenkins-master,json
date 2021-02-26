@@ -1,0 +1,88 @@
+{
+    "variables": {
+        "build_name": "centos7-x86_64",
+        "build_cpu_cores": "2",
+        "build_memory": "1024",
+        "cpu_cores": "1",
+        "memory": "512",
+        "disk_size": "10240",
+        "headless": "false",
+        "iso_checksum": "38d5d51d9d100fd73df031ffd6bd8b1297ce24660dc8c13a3b8b4534a4bd291c",
+        "iso_checksum_type": "sha256",
+        "iso_url": "http://mirrors.neterra.net/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso",
+        "cloud_token": "{{ env `MY_ATLAS_TOKEN` }}",
+        "version": "0.0.1-{{timestamp}}",
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant"
+    },
+    "builders": [
+        {
+        "type": "virtualbox-iso",
+        "name": "{{ user `build_name` }}-vbox",
+        "vm_name": "packer-centos-vm",
+        "boot_wait": "10s",
+        "disk_size": "{{user `disk_size`}}",
+        "headless": true,
+        "guest_os_type": "RedHat_64",
+        "http_directory": "http",
+        "iso_url": "{{user `iso_url`}}",
+        "iso_checksum": "{{user `iso_checksum`}}",
+        "iso_checksum_type": "{{user `iso_checksum_type`}}",
+        "guest_additions_path": "VBoxGuestAdditions.iso",
+  
+        "boot_command": [
+          "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstart.ks<enter><wait>"
+        ],
+
+        "shutdown_command": "sudo -S /sbin/halt -h -p",
+        "shutdown_timeout" : "5m",
+
+        "ssh_wait_timeout": "15m",
+        "ssh_username": "{{user `ssh_username`}}",
+        "ssh_password": "{{user `ssh_password`}}",
+
+        "vboxmanage": [
+          [  "modifyvm",  "{{.Name}}",  "--memory",  "1024" ],
+          [  "modifyvm",  "{{.Name}}",  "--cpus",  "2" ]
+        ],
+
+        "hard_drive_interface": "sata",
+        "virtualbox_version_file": ".vbox_version",
+  
+        "export_opts":
+        [
+          "--manifest",
+          "--vsys", "0",
+          "--description", "{{user `artifact_description`}}",
+          "--version", "{{user `artifact_version`}}"
+        ]    
+        }
+    ],
+    "provisioners": [
+        {
+          "type": "shell",
+          "execute_command": "{{.Vars}} sudo -S -E bash '{{.Path}}'",
+          "start_retry_timeout": "1m",
+          "expect_disconnect": true,
+          "pause_before": "5s",
+          "scripts": [
+            "scripts/base.sh",
+            "scripts/vagrant.sh",
+            "scripts/virtualbox.sh",
+            "scripts/clean.sh",
+            "scripts/docker-install.sh",
+            "scripts/jenkins-master-install.sh",
+            "scripts/jenkins-master-ssh.sh",
+            "scripts/cleanup.sh"
+            ]
+        }
+    ],
+    "post-processors": [
+        [
+         {
+          "output": "builds/{{.Provider}}-centos7-minimal.box",
+          "type": "vagrant"
+         }
+        ]
+    ]
+}

@@ -1,0 +1,53 @@
+pipeline {
+
+  agent {
+    label 'jenkins-slave-10'
+  }
+  
+  options {
+    timestamps()
+    disableConcurrentBuilds() 
+  }
+  
+   stages {
+    stage('Clone PYTHON_PROJECT_NAME Master Branch') {
+      steps {
+    
+        checkout([$class: 'GitSCM', 
+            branches: [[name: "master"]], 
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'PYTHON_PROJECT_NAME']],
+            submoduleCfg: [],
+            userRemoteConfigs: [[credentialsId: 'adavarski-github', url: 'git@github.com:adavarski/PYTHON_PROJECT_NAME.git']]
+        ])
+      }
+    } 
+
+
+    stage('Bandit Static Analyze PYTHON_PROJECT_NAME') {
+      steps {
+        dir('PYTHON_PROJECT_NAME')  {
+        script {
+          sh 'docker run -u root --rm -v ${PWD}:/app davarski/bandit bandit -r ./ -f html -o PYTHON_PROJECT_NAME.html||true'
+        }
+      }
+    }
+  }
+    
+
+    stage('Publish Security Report') {
+      steps {
+        script {
+          publishHTML (target: [
+              allowMissing: false,
+              alwaysLinkToLastBuild: false,
+              keepAll: true,
+              reportDir: './PYTHON_PROJECT_NAME',
+              reportFiles: 'PYTHON_PROJECT_NAME.html',
+              reportName: "PYTHON_PROJECT_NAME Vulnerability Report"
+            ])
+        }
+      }
+    }   
+  }
+}

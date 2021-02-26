@@ -1,0 +1,36 @@
+#ec2 information
+instance_type: t2.medium
+security_group_build: "sgBuild"
+security_group_deployment: "sgDeploy"
+id_token_build: "550e8400-e29b-41d4-a716-446655440070"
+id_token_preprod: "550e8400-e29b-41d4-a716-446655440071"
+id_token_prod: "550e8400-e29b-41d4-a716-446655440072"
+host_group_name_build: "build"
+host_group_name_preprod: "preprod"
+host_group_name_prod: "prod"
+aim_centos7: "ami-0083662ba17882949"
+key_name: "aws-us-east1-devsecops"
+region: "us-east-1"
+
+#deployment information
+home: "/home/centos"
+dns_addr_server_gitlab: "ec2-18-211-180-13.compute-1.amazonaws.com"
+gitlab_docker_repo: "mypipeline"
+source_branch: "master"
+application_name: "visitors-app"
+application_name_db: "visitors-db"
+application_name_backend: "visitors-service"
+application_name_frontend: "visitors-webui"
+
+gitlab_repos_application_name: "ssh://git@ec2-18-211-180-13.compute-1.amazonaws.com:2222/adavarski/app.git"
+
+image_name_back_end: "visitors-service"
+image_name_front_end: "visitors-webui"
+image_name_database: "visitors-db"
+clair_server: "172.17.0.1"
+
+#vaulted info
+gitlab_container_registry_username: "{{ gitlab_container_registry_username_vault }}"
+gitlab_container_registry_password: "{{ gitlab_container_registry_password_vault }}"
+certificate_domaine: "{{ certificate_domaine_vault }}"
+gitlab_private_key: "{{ gitlab_private_key_vault }}"

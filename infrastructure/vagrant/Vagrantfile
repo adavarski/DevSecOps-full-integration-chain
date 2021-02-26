@@ -1,0 +1,73 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "jenkins-slave"
+  config.ssh.insert_key = false
+
+
+    # configs for vagrant-hostmanager
+    if Vagrant.has_plugin?("HostManager")
+      config.hostmanager.enabled = true
+      config.hostmanager.manage_host = true
+    else
+      raise "ERROR can't find vagrant-hostmanager! Please install it w/ vagrant plugin install vagrant-hostmanager"
+    end
+  
+  config.vm.define "master" do |c|
+    c.vm.hostname = "master"
+    c.vm.network :"public_network", ip: "10.50.1.35" , bridge: "ens3f0"
+    c.vm.provider :virtualbox do |vb|
+      vb.customize ['modifyvm', :id, '--memory', 1024]
+      vb.customize ['modifyvm', :id, '--cpuexecutioncap', '70']
+      vb.customize ['modifyvm', :id, '--cpus', 1]
+      vb.customize ["modifyvm", :id, "--audio", "none"]
+
+    end
+  end
+
+  config.vm.define "build" do |c|
+    c.vm.hostname = "build"
+    c.vm.network :"public_network", ip: "10.50.1.36" , bridge: "ens3f0"
+    c.vm.provider :virtualbox do |vb|
+      vb.customize ['modifyvm', :id, '--memory', 1024]
+      vb.customize ['modifyvm', :id, '--cpuexecutioncap', '50']
+      vb.customize ['modifyvm', :id, '--cpus', 1]
+      vb.customize ["modifyvm", :id, "--audio", "none"]
+
+    end
+  end
+
+  config.vm.define "staging" do |c|
+    c.vm.hostname = "staging"
+    c.vm.network :"public_network", ip: "10.50.1.37" , bridge: "ens3f0"
+    c.vm.provider :virtualbox do |vb|
+      vb.customize ['modifyvm', :id, '--memory', 1024]
+      vb.customize ['modifyvm', :id, '--cpuexecutioncap', '50']
+      vb.customize ['modifyvm', :id, '--cpus', 1] 
+      vb.customize ["modifyvm", :id, "--audio", "none"]
+
+    end
+  end 
+
+  config.vm.define "production" do |c|
+    c.vm.hostname = "production"
+    c.vm.network :"public_network", ip: "10.50.1.38" , bridge: "ens3f0"
+    c.vm.provider :virtualbox do |vb|
+      vb.customize ['modifyvm', :id, '--memory', 1024]
+      vb.customize ['modifyvm', :id, '--cpuexecutioncap', '50']
+      vb.customize ['modifyvm', :id, '--cpus', 1]
+      vb.customize ["modifyvm", :id, "--audio", "none"]
+
+    end
+  end 
+
+
+end
+
+
+
+ 
+

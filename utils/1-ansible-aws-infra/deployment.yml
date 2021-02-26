@@ -1,0 +1,129 @@
+---
+- name: Depployment Infrastructure
+  hosts: local
+  become: yes
+  roles:
+    - deploy-infrastructure
+  post_tasks:
+    - name: Create directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      with_items:
+      - "/tmp/attack"
+
+    - name: Copy xss.attack File
+      template:
+        src: /home/admin/ansible/attack/xss.attack.j2
+        dest: /tmp/attack/xss.attack
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copy xss.attack File
+      template:
+        src: /home/admin/ansible/attack/verbs.attack.j2
+        dest: /tmp/attack/verbs.attack
+        owner: root
+        group: root
+        mode: '0644'
+
+  tags:
+    - dev
+    - master
+
+
+- name: Install Prerequiest
+  remote_user: centos
+  become: yes
+  hosts:
+    - "{{ host_group_name_build }}"
+    - "{{ host_group_name_preprod }}"
+    - "{{ host_group_name_prod }}"
+  vars_files:
+    - "group_vars/all.yml"
+    - "secrets/.secret.vault"
+  vars:
+    pip_install_packages:
+      - name: docker
+  pre_tasks:
+    - block:
+      - name: Install EPEL Repo
+        package:
+          name: epel-release
+          state: present
+
+      - name: Install python-pip
+        package:
+          name: python-pip
+          state: present
+          update_cache: yes
+
+      - name: Install git
+        package:
+          name: git
+          state: present
+      tags:
+        - dev
+        - master
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+  tags:
+    - dev
+    - master
+
+- name:  Set Environment Build
+  hosts: "{{ host_group_name_build }}"
+  vars_files:
+    - "group_vars/all.yml"
+    - "secrets/.secret.vault"
+  remote_user: centos
+  become: yes
+  roles:
+    - set-infrastructure-build
+  tags:
+    - dev
+
+- name: Scan and Push atrtifact
+  hosts: "{{ host_group_name_build }}"
+  vars_files:
+    - "group_vars/all.yml"
+    - "secrets/.secret.vault"
+  remote_user: centos
+  become: yes
+  roles:
+    - scan-artefact
+  tags:
+    - dev
+
+- name: Deploy Application in preproduction
+  hosts:
+    - "{{ host_group_name_preprod }}"
+  vars_files:
+    - "group_vars/all.yml"
+    - "secrets/.secret.vault"
+  vars:
+    public_ip: "{{ hostvars['localhost']['public_ip_preprod'] }}"
+  remote_user: centos
+  become: yes
+  roles:
+    - deploy-application
+  tags:
+    - dev
+
+- name:  Deploy Application in production
+  hosts:
+    - "{{ host_group_name_prod }}"
+  vars_files:
+    - "group_vars/all.yml"
+    - "secrets/.secret.vault"
+  vars:
+    public_ip: "{{ hostvars['localhost']['public_ip_prod'] }}"
+  remote_user: centos
+  become: yes
+  roles:
+    - deploy-application
+  tags:
+    - master

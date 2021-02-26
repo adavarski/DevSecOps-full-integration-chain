@@ -1,0 +1,72 @@
+pipeline {
+  agent {
+    label 'jenkins-slave10'
+  }
+  options {
+    timestamps()
+    disableConcurrentBuilds() 
+  }
+  
+   stages {
+       stage('Clone SCALA-PROJECT Master Branch') {
+      steps {
+    
+        checkout([$class: 'GitSCM', 
+            branches: [[name: "master"]], 
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'SCALA-PROJECT']],
+            submoduleCfg: [],
+            userRemoteConfigs: [[credentialsId: 'adavarski-github', url: 'git@github.com:adavarski/SCALA-PROJECT.git']]
+        ])
+      }
+    } 
+
+
+    stage('PenTesting SCALA-PROJECT') {
+      steps {
+        dir('SCALA-PROJECT')  {
+        script {
+          sh 'sbt dependencyCheck'
+        }
+      }
+    }
+    
+    }
+    
+
+    stage('Publish Pentesting Vulnerability Report') {
+      steps {
+        script {
+          publishHTML (target: [
+              allowMissing: false,
+              alwaysLinkToLastBuild: false,
+              keepAll: true,
+              reportDir: './SCALA-PROJECT/target',
+              reportFiles: 'dependency-check-vulnerability.html',
+              reportName: "Petntesting Vulnerability Report"
+            ])
+        }
+      }
+    }
+
+    stage('Publish Pentesting Full Report') {
+      steps {
+        script {
+          publishHTML (target: [
+              allowMissing: false,
+              alwaysLinkToLastBuild: false,
+              keepAll: true,
+              reportDir: './SCALA-PROJECT/target',
+              reportFiles: 'dependency-check-report.html',
+              reportName: "Petntesting Full Report"
+            ])
+        }
+      }
+    }
+      
+}
+
+
+
+
+}

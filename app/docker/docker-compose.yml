@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  visitors-mysql:
+    image: mysql:5.7
+    hostname: visitors-mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=visitors_db
+      - MYSQL_USER=visitors
+      - MYSQL_PASSWORD=password
+
+  visitors-service:
+    image: davarski/visitors-service:1.0.0
+    hostname: visitors-service
+    ports:
+      - 8000:30685
+    environment:
+      - MYSQL_DATABASE=visitors_db
+      - MYSQL_SERVICE_HOST=visitors-mysql
+      - MYSQL_USER=visitors
+      - MYSQL_PASSWORD=password
+    depends_on:
+      - visitors-mysql
+
+  visitors-webui:
+    image: davarski/visitors-webui:1.0.0
+    hostname: visitors-webui
+    environment:
+      - REACT_APP_BACKEND_HOST=visitors-service
+      - REACT_APP_BACKEND_PORT=30685 
+      - REACT_APP_TITLE="Visitors DASHBOARD"
+    ports:
+      - 3000:3000
+    depends_on:
+      - visitors-mysql

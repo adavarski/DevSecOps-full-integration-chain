@@ -1,0 +1,8 @@
+db.sqlite3
+
+.DS_Store
+.vscode
+
+**__pycache__
+*.pyc
+*.egg-info

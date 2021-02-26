@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visitors-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: visitors
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: visitors
+        tier: backend
+    spec:
+      containers:
+        - name: visitors-backend
+          image: "davarski/visitors-service:1.0.0"
+          imagePullPolicy: Always
+          ports:
+            - name: visitors
+              containerPort: 8000
+          env:
+            - name: MYSQL_DATABASE
+              value: visitors_db
+            - name: MYSQL_SERVICE_HOST
+              value: mysql-service
+            - name: MYSQL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-auth
+                  key: username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-auth
+                  key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: visitors-backend-service
+  labels:
+    app: visitors
+    tier: backend
+spec:
+  type: NodePort
+  ports:
+    - port: 8000
+      targetPort: 8000
+      nodePort: 30685
+      protocol: TCP
+  selector:
+    app: visitors
+    tier: backend

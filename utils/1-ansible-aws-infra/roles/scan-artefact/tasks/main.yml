@@ -1,0 +1,78 @@
+---
+- name: Deploy container clair-db
+  docker_container:
+    name: "clair_db"
+    hostname: "clair_db"
+    image: "arminc/clair-db:2017-09-18"
+    ports:
+      - "5432:5432"
+
+- name: Deploy container clair-local-scan
+  docker_container:
+    name: "clair"
+    hostname: "clair"
+    state: "started"
+    restart_policy: "always"
+    image: "arminc/clair-local-scan:v2.0.6"
+    ports:
+      - "6060:6060"
+    links:
+      - "clair_db:postgres"
+  register: clair_service
+
+- name: Get clair container IP
+  set_fact:
+    container_ip: "{{ clair_service.ansible_facts.docker_container.NetworkSettings.IPAddress }}"
+
+- name: Check container container clair-local-scan is running
+  wait_for:
+    host: "{{ container_ip }}"
+    port: 6060
+
+- name: Downloading and setting up clair-scanner binary
+  get_url:
+    url: https://github.com/arminc/clair-scanner/releases/download/v6/clair-scanner_linux_amd64
+    dest: /usr/local/bin/clair-scanner
+    mode: 0755
+
+- name: Scanning {{ image_name_front_end }} container for vulnerabilities
+  shell: "/usr/local/bin/clair-scanner -r {{ image_name_front_end }}-scan-report.json -c http://{{ clair_server }}:6060 --ip {{ clair_server }} {{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_front_end }}:latest"
+  register: scan_output_frontend_app
+  ignore_errors: yes
+
+- name: Scanning {{ image_name_back_end }} container for vulnerabilities
+  shell: "/usr/local/bin/clair-scanner -r {{ image_name_back_end }}-scan-report.json -c http://{{ clair_server }}:6060 --ip {{ clair_server }} {{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_back_end }}:latest"
+  register: scan_output_backaend_app
+  ignore_errors: yes
+
+- name: Scanning {{ image_name_database }} container for vulnerabilities
+  shell: "/usr/local/bin/clair-scanner -r /tmp/{{ image_name_database }}-scan-report.json -c http://{{ clair_server }}:6060 --ip {{ clair_server }} {{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_database }}:latest"
+  register: scan_output_database_app
+  ignore_errors: yes
+
+- name: Push {{ image_name_database }} in Gitlab Conatiner Registry
+  docker_image:
+    name: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_database }}"
+    tag: "latest"
+    push: yes
+    source: local
+
+- name: Push {{ image_name_back_end }} in Gitlab Conatiner Registry
+  docker_image:
+    name: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_back_end }}"
+    tag: "latest"
+    push: yes
+    source: local
+
+- name: Push {{ image_name_front_end }} in Gitlab Conatiner Registry
+  docker_image:
+    name: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_front_end }}"
+    tag: "latest"
+    push: yes
+    source: local
+
+- name: Stop and remove all docker container
+  shell: "docker rm -f $(docker ps -aq)"
+
+- name: Remove all docker images
+  shell: "docker image rm -f $(docker images -q)"

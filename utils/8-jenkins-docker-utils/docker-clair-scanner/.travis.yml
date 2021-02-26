@@ -1,0 +1,14 @@
+sudo: 'required'
+
+services:
+  - 'docker'
+
+script:
+  - docker build . -t docker-clair-scanner:$TRAVIS_COMMIT
+
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+      docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD ;
+      docker tag docker-clair-scanner:$TRAVIS_COMMIT davarski/docker-clair-scanner:latest ;
+      docker push davarski/docker-clair-scanner:latest ;
+    fi

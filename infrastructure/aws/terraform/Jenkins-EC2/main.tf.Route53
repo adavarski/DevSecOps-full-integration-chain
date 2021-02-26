@@ -1,0 +1,56 @@
+# Use AWS Terraform provider
+provider "aws" {
+  region = "us-east-2"
+}
+
+
+data "template_file" "myuserdata" {
+  template = "${file("${path.cwd}/user-data.tpl")}"
+}
+
+# Create EC2 instance
+resource "aws_instance" "jenkins-tf" {
+  ami                    = var.ami
+  key_name               = var.key_name
+  vpc_security_group_ids = [aws_security_group.demo-tf.id]
+  source_dest_check      = false
+  instance_type          = var.instance_type
+  user_data = "${data.template_file.myuserdata.template}"
+  tags = {
+    Name  = "Instance for Jenkins testing"
+  }
+}
+
+
+# Create Security Group for EC2
+resource "aws_security_group" "demo-tf" {
+  name = "terraform-demo-sg"
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}
+
+resource "aws_route53_zone" "primary" {
+  name = "devops-demo.com"
+}
+
+resource "aws_route53_record" "jenkins" {
+  zone_id = aws_route53_zone.primary.id
+  name    = "jenkins"
+  type    = "A"
+  ttl     = "300"
+  records = [aws_instance.jenkins-tf.public_ip]
+}

@@ -1,0 +1,67 @@
+---
+- name: Create domain directory to store certs domain file
+  file:
+    path: "/etc/docker/certs.d/{{ dns_addr_server_gitlab }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy ca.crt file with owner
+  copy:
+    content: "{{ certificate_domaine }}"
+    dest: "/etc/docker/certs.d/{{ dns_addr_server_gitlab }}/ca.crt"
+    owner: root
+
+- name: Log into GitLab Container Registry
+  docker_login:
+    registry: "{{ dns_addr_server_gitlab }}"
+    username: "{{ gitlab_container_registry_username }}"
+    password: "{{ gitlab_container_registry_password }}"
+    reauthorize: yes
+
+- name: Create docker network to interconnect containers
+  docker_network:
+    name: network-app
+
+# deploy application
+- name: Deploy database
+  docker_container:
+    name: "{{ image_name_database }}"
+    hostname: "{{ image_name_database }}"
+    image: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_database }}:latest"
+    state: "started"
+    restart_policy: "always"
+    networks:
+      - name: "network-visitors-app"
+
+- name: Deploy backend
+  docker_container:
+    name: "{{ image_name_back_end }}"
+    hostname: "{{ image_name_back_end }}"
+    image: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_back_end }}:latest"
+    state: "started"
+    restart_policy: "always"
+    networks:
+      - name: "network-visitors-app"
+    ports:
+      - "8000:30685"
+
+- name: Deploy frontend
+  docker_container:
+    name: "{{ image_name_front_end }}"
+    hostname: "{{ image_name_front_end }}"
+    image: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_front_end }}:latest"
+    state: "started"
+    restart_policy: "always"
+    networks:
+      - name: "network-visitors-app"
+    ports:
+      - "3000:3000"
+
+- name: Ensure application is reachable
+  uri:
+    url: "http://{{ public_ip }}:3000"
+    status_code: 200
+  register: result
+  until: result.status == 200
+  retries: 120
+  delay: 1

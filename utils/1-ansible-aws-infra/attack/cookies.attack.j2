@@ -1,0 +1,17 @@
+@slow
+Feature: Evaluate received cookies against expected.
+
+Background:
+  Given "curl" is installed
+  And the following profile:
+    | name     | value      |
+    | hostname | http://{{ public_ip_preprod }}:3000 |
+
+Scenario: Verify server is returning the cookies expected
+  When I launch a "curl" attack with:
+    """
+    curl --include --location --head --silent <hostname>
+    """
+  Then the following cookies should be received:
+    | name | httponly |
+    | NID  | true     |

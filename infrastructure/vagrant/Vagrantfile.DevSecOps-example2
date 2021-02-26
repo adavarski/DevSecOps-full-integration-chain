@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+ 
+Vagrant.configure(2) do |config|
+ 
+  config.vm.box = "jenkins-slave"
+  config.vm.network "public_network", ip: "10.50.1.35" , bridge: "ens3f0"
+  config.vm.network "public_network", ip: "10.50.1.36" , bridge: "ens3f0"
+  config.vm.network "public_network", ip: "10.50.1.37" , bridge: "ens3f0"  
+  config.vm.network "public_network", ip: "10.50.1.38" , bridge: "ens3f0"  
+ 
+  config.vm.provider "virtualbox" do |vb|
+#    vb.gui = true
+    vb.memory = "8192"
+    vb.cpus = 4
+    vb.name = "jenkins-slave-1"
+  end
+ 
+end
+

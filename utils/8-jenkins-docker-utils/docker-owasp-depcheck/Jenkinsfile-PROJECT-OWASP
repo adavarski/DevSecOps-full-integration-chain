@@ -1,0 +1,82 @@
+pipeline {
+
+  agent {
+    label 'jenkins-slave10'
+  }
+  
+  options {
+    timestamps()
+    disableConcurrentBuilds() 
+  }
+  
+   stages {
+    stage('Clone owasp-docker-depcheck') {
+      steps {
+    
+        checkout([$class: 'GitSCM', 
+            branches: [[name: "master"]], 
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'depcheck']],
+            submoduleCfg: [],
+            userRemoteConfigs: [[credentialsId: 'adavarski-github', url: 'git@github.com:adavarski/owasp-docker-depcheck']]
+        ])
+      }
+    } 
+
+
+    stage('Clone PROJECT master') {
+      steps {
+        dir('depcheck')  {
+            checkout([$class: 'GitSCM', 
+            branches: [[name: "master"]], 
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'PROJECT']],
+            submoduleCfg: [],
+            userRemoteConfigs: [[credentialsId: 'adavarski-github', url: 'git@github.com:adavarski/PROJECT']]
+        ])
+        
+
+        }
+
+
+    
+      }
+      }
+    
+// stage('npm install') {
+//      steps {
+//        dir('depcheck/PROJECT')  {
+//        sh 'npm install'
+//        }
+//      }
+//    }
+
+        stage('PenTesting PROJECT') {
+      steps {
+        dir('depcheck')  {
+        sh 'PROJECT_NAME=PROJECT ./owasp-check.sh'
+        }
+      }
+    }
+    
+        stage('Publish Pentesting Vulnerability Report') {
+      steps {
+        script {
+          publishHTML (target: [
+              allowMissing: false,
+              alwaysLinkToLastBuild: false,
+              keepAll: true,
+              reportDir: './depcheck/owasp-dependency-check/reports/',
+              reportFiles: 'dc.html',
+              reportName: "Petntesting Vulnerability Report"
+            ])
+        }
+      }
+    }
+    
+    
+    
+   }
+
+
+}

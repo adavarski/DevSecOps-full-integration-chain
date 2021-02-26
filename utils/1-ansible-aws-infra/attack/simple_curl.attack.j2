@@ -1,0 +1,15 @@
+Feature: Launch curl attack
+
+Background:
+  Given "curl" is installed
+  And the following profile:
+    | name     | value      |
+    | hostname | http://{{ public_ip_preprod }}:3000 |
+
+Scenario: Verify a 301 is received from a curl
+  When I launch a "curl" attack with:
+    """
+    curl --silent --output /dev/null --write-out "%{http_code}" <hostname>
+    """
+  # check for 302 or 301 response code
+  Then the output should match /30\d+/

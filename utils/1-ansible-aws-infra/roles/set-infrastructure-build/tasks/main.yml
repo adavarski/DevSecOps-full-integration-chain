@@ -1,0 +1,73 @@
+---
+- name: Create domain directory to store certs domain file
+  file:
+    path: "/etc/docker/certs.d/{{ dns_addr_server_gitlab }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy ca.crt file with owner and permissions
+  copy:
+    content: "{{ certificate_domaine }}"
+    dest: "/etc/docker/certs.d/{{ dns_addr_server_gitlab }}/ca.crt"
+    owner: root
+
+- name: Log into GitLab Container Registry
+  docker_login:
+    registry: "{{ dns_addr_server_gitlab }}"
+    username: "{{ gitlab_container_registry_username }}"
+    password: "{{ gitlab_container_registry_password }}"
+    reauthorize: yes
+
+- name: Copy devops private key file
+  copy:
+    content: '{{ gitlab_private_key }}'
+    dest: "{{ home }}/.ssh/id_rsa"
+    owner: centos
+
+- name: Create project directory
+  file:
+    path: "{{ home }}/{{ application_name }}"
+    state: directory
+
+- name: Retrieve code source
+  git:
+    repo: "{{ gitlab_repos_application_name }}"
+    dest: "{{ home }}/{{ application_name }}"
+    accept_hostkey: yes
+    force: yes
+    recursive: no
+    key_file: "{{ home }}/.ssh/id_rsa"
+    version: "{{ source_branch }}"
+
+- name: Build {{ image_name_front_end }} image
+  docker_image:
+    build:
+      dockerfile: Dockerfile
+      path: "{{ home }}/{{ application_name }}/{{ application_name_frontend }}"
+      pull: no
+    name: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_front_end }}"
+    push: no
+    tag: latest
+    source: build
+
+- name: Build {{ image_name_back_end }} image
+  docker_image:
+    build:
+      dockerfile: Dockerfile
+      path: "{{ home }}/{{ application_name }}/{{ application_name_backend }}"
+      pull: no
+    name: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_back_end }}"
+    push: no
+    tag: latest
+    source: build
+
+- name: Build {{ image_name_database }} image
+  docker_image:
+    build:
+      dockerfile: Dockerfile
+      path: "{{ home }}/{{ application_name }}/{{ application_name_db }}"
+      pull: no
+    name: "{{ dns_addr_server_gitlab }}/{{ gitlab_container_registry_username }}/{{ gitlab_docker_repo }}/{{ image_name_database }}"
+    push: no
+    tag: latest
+    source: build

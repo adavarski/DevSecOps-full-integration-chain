@@ -1,0 +1,22 @@
+@slow
+Feature: Evaluate responses to various HTTP methods.
+
+Background:
+  Given "curl" is installed
+  And the following profile:
+    | name     | value      |
+    | hostname | http://{{ public_ip_preprod }}:3000 |
+
+Scenario Outline: Verify server responds correctly to various HTTP methods
+  When I launch a "curl" attack with:
+    """
+    curl -i -X <method> <hostname>
+    """
+  Then the output should contain "<response>"
+  Examples:
+    | method | response                       |
+    | delete | 405 Method Not Allowed |
+    | patch  | 405 Method Not Allowed |
+    | trace  | 405 Method Not Allowed|
+    | track  | 405 Method Not Allowed |
+    | bogus  | HTTP/1.0 405 METHOD NOT ALLOWED |
