@@ -35,3 +35,30 @@
   + OWASP Dependency-Check script for DevSecOps pipelines (react, python, node, etc.)
   + Docker Bandit SAST (Static Application Security Testing) for Python projects and DevSecOps pipelines (python)
   + Docker container for clair-scanner and for integration into a DevSecOps pipelines (docker containers vulnerability scan)
+
++ [A Jenkins end-to-end DevSecOps pipeline for Python web application (docker based)](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/9-jenkins-pipeline-python-end-to-end)
+  + Checkout project - check out python application project repository with XSS vulnerability (https://github.com/adavarski/Python-app-DevSecOps-XSS)
+  + git secret check - check there is no password/token/keys/secrets accidently commited to project github (trufflehog
+  + SCA - check external dependencies/libraries used by the project have no known vulnerabilities (safety)
+  + SAST - static analysis of the application source code for exploits, bugs, vulnerabilites (Bandit)
+  + Container audit - audit the container that is used to deploy the python application (Lynis)
+  + DAST - deploy the application, register, login, attack & analyse it from the frontend as authenticated user (Nikto + Selenium + python custom script for DAST automation)
+  + System security audit - analyse at the security posture of the system hosting the application (Lynis)
+  + WAF - deploy application with WAF which will filter malicious requests according to OWASP core ruleset (owasp/modsecurity-crs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
