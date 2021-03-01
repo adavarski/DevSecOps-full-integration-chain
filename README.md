@@ -182,4 +182,23 @@ Docker, docker-compose, Ansible, Tags, Playbooks, Roles, Galaxy, Jenkins, Shared
   + Docker Bandit SAST (Static Application Security Testing) for Python projects and DevSecOps pipelines (python)
   + Docker container for clair-scanner and for integration into a DevSecOps pipelines (docker containers vulnerability scan)
 
++ [Example: A Jenkins end-to-end DevSecOps pipeline for Python web application (docker based)](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/9-jenkins-pipeline-python-end-to-end):
+  Jenkins instance/environment hosted on AWS EC2 (Ubuntu 18.04) or local environment (on your laptop/workstation/on-prem ubuntu server).
+  
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-full.png" width="900">
+
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-steps-UI.png" width="900">
+
+  + Checkout project - check out python application project repository with XSS vulnerability (https://github.com/adavarski/Python-app-DevSecOps-XSS)
+  + git secret check - check there is no password/token/keys/secrets accidently commited to project github (trufflehog
+  + SCA - check external dependencies/libraries used by the project have no known vulnerabilities (safety)
+  + SAST - static analysis of the application source code for exploits, bugs, vulnerabilites (Bandit)
+  + Container audit - audit the container that is used to deploy the python application (Lynis)
+  + DAST - deploy the application, register, login, attack & analyse it from the frontend as authenticated user (Nikto + Selenium + python custom script for DAST automation)
+  + System security audit - analyse at the security posture of the system hosting the application (Lynis)
+  + WAF - deploy application with WAF which will filter malicious requests according to OWASP core ruleset (owasp/modsecurity-crs)
+
+
+
+
 
