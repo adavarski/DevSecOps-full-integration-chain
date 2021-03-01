@@ -1,0 +1,46 @@
+# Run lynis audit on system and fetch logs
+- name: Run host audit in instance(s)
+  hosts: tstlaunched
+  remote_user: ubuntu
+  gather_facts: False
+  tasks:
+   - name: Get the lynis installer
+     get_url: 
+       url: https://downloads.cisofy.com/lynis/lynis-2.7.5.tar.gz
+       dest: /tmp/
+   - name: Unzip it
+     unarchive: 
+       src: /tmp/lynis-2.7.5.tar.gz
+       dest: /home/ubuntu/
+       copy: no     
+   - name: Run system audit
+     shell: ./lynis audit system --quick --auditor "The Auditor" | ansi2html > host_audit_report.html
+     args:
+       chdir: lynis/
+   - name: Fetch log file from host
+     fetch:
+        src: /tmp/lynis.log
+        dest: "{{ logfolder }}"
+        flat: yes
+   - name: Fetch report file from host
+     fetch:
+        src: /tmp/lynis-report.dat
+        dest: "{{ logfolder }}"
+        flat: yes
+   - name: Fetch fancy html report
+     fetch:
+        src: /home/ubuntu/lynis/host_audit_report.html
+        dest: "{{ logfolder }}"
+        flat: yes
+   - name: Remove html report on host
+     file:
+       path: /home/ubuntu/lynis/host_audit_report.html
+       state: absent        
+   - name: Remove log file on host
+     file:
+       path: /tmp/lynis.log
+       state: absent
+   - name: Remove report on host
+     file:
+       path: /tmp/lynis-report.dat
+       state: absent       

@@ -1,0 +1,419 @@
+Started by user admin
+Replayed #2
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/DevSecOps-pipeline-python
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/adavarski/DevSecOps-pipeline-python # timeout=10
+Fetching upstream changes from https://github.com/adavarski/DevSecOps-pipeline-python
+ > git --version # timeout=10
+ > git fetch --tags --force --progress -- https://github.com/adavarski/DevSecOps-pipeline-python +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/main^{commit} # timeout=10
+Checking out Revision 9b7b1931576922799f5fa941ef494a556f632dd8 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9b7b1931576922799f5fa941ef494a556f632dd8 # timeout=10
+Commit message: "Update configureTestEnv.yml"
+ > git rev-list --no-walk 9d3252c312b677fff8d873ceb32a393b856c8cf8 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Check AWS credentials)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Checkout project)
+[Pipeline] echo
+downloading git python app ...
+[Pipeline] checkout
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/adavarski/Python-app-DevSecOps-XSS.git # timeout=10
+Fetching upstream changes from https://github.com/adavarski/Python-app-DevSecOps-XSS.git
+ > git --version # timeout=10
+ > git fetch --tags --force --progress -- https://github.com/adavarski/Python-app-DevSecOps-XSS.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/main^{commit} # timeout=10
+Checking out Revision 9d71557af602c76bd64a055e0dc94590b33ed489 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9d71557af602c76bd64a055e0dc94590b33ed489 # timeout=10
+Commit message: "Init repo"
+ > git rev-list --no-walk 9d71557af602c76bd64a055e0dc94590b33ed489 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (git secret check)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+running trufflehog to check project history for secrets
+[Pipeline] sh
++ trufflehog --regex --entropy=False --max_depth=3 https://github.com/adavarski/Python-app-DevSecOps-XSS
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SCA)
+[Pipeline] echo
+running python safety check on requirements.txt file
+[Pipeline] sh
++ safety check -r /var/jenkins_home/workspace/DevSecOps-pipeline-python/gossip-world/app/requirements.txt
++==============================================================================+
+|                                                                              |
+|                               /$$$$$$            /$$                         |
+|                              /$$__  $$          | $$                         |
+|           /$$$$$$$  /$$$$$$ | $$  \__//$$$$$$  /$$$$$$   /$$   /$$           |
+|          /$$_____/ |____  $$| $$$$   /$$__  $$|_  $$_/  | $$  | $$           |
+|         |  $$$$$$   /$$$$$$$| $$_/  | $$$$$$$$  | $$    | $$  | $$           |
+|          \____  $$ /$$__  $$| $$    | $$_____/  | $$ /$$| $$  | $$           |
+|          /$$$$$$$/|  $$$$$$$| $$    |  $$$$$$$  |  $$$$/|  $$$$$$$           |
+|         |_______/  \_______/|__/     \_______/   \___/   \____  $$           |
+|                                                          /$$  | $$           |
+|                                                         |  $$$$$$/           |
+|  by pyup.io                                              \______/            |
+|                                                                              |
++==============================================================================+
+| REPORT                                                                       |
+| checked 12 packages, using free DB (updated once a month)                    |
++============================+===========+==========================+==========+
+| package                    | installed | affected                 | ID       |
++============================+===========+==========================+==========+
+| flask-cors                 | 3.0.7     | <3.0.9                   | 38745    |
+| jinja2                     | 2.10      | >=0.0.0,<2.11.3          | 39525    |
+| werkzeug                   | 0.14.1    | <0.15.0                  | 36967    |
++==============================================================================+
++ true
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SAST)
+[Pipeline] echo
+Testing source code for security bugs and vulnerabilities
+[Pipeline] sh
++ bandit -r /var/jenkins_home/workspace/DevSecOps-pipeline-python/gossip-world/app/ -ll
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.7.3
+Run started:2021-03-01 08:28:16.212046
+
+Test results:
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   Location: /var/jenkins_home/workspace/DevSecOps-pipeline-python/gossip-world/app/routes.py:232
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b104_hardcoded_bind_all_interfaces.html
+231	
+232	    app.run(host='0.0.0.0', port=10007, debug=False)
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 429
+	Total lines skipped (#nosec): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0.0
+		Low: 0.0
+		Medium: 1.0
+		High: 0.0
+	Total issues (by confidence):
+		Undefined: 0.0
+		Low: 0.0
+		Medium: 1.0
+		High: 0.0
+Files skipped (0):
++ true
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Container audit)
+[Pipeline] echo
+Audit the dockerfile used to spin up the web application
+[Pipeline] script
+[Pipeline] {
+[Pipeline] fileExists
+[Pipeline] echo
+lynis already exists
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] dir
+Running in /var/jenkins_home/lynis
+[Pipeline] {
+[Pipeline] sh
++ mkdir /var/jenkins_home/workspace/DevSecOps-pipeline-python/jenkins-DevSecOps-pipeline-python-3/
++ ./lynis audit dockerfile /var/jenkins_home/workspace/DevSecOps-pipeline-python/gossip-world/deployments/Dockerfile
++ ansi2html
++ mv /tmp/lynis.log /var/jenkins_home/workspace/DevSecOps-pipeline-python/jenkins-DevSecOps-pipeline-python-3/docker_lynis.log
++ mv /tmp/lynis-report.dat /var/jenkins_home/workspace/DevSecOps-pipeline-python/jenkins-DevSecOps-pipeline-python-3/docker_lynis-report.dat
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Setup test env)
+[Pipeline] sh
++ echo [local]
++ echo localhost ansible_connection=local
++ echo [tstlaunched]
++ tar cvfz /var/jenkins_home/pythonapp.tar.gz -C /var/jenkins_home/workspace/DevSecOps-pipeline-python/gossip-world .
+./
+./app/
+./app/static/
+./app/static/js/
+./app/static/js/bootstrap.min.js
+./app/static/js/npm.js
+./app/static/css/
+./app/static/css/login.css
+./app/static/css/bootstrap.min.css.map
+./app/static/css/bootstrap-theme.min.css.map
+./app/static/css/newpost.css
+./app/static/css/blog-post.css
+./app/static/css/blog-home.css
+./app/static/css/bootstrap-theme.min.css
+./app/static/css/bootstrap.min.css
+./app/static/main.css
+./app/static/fonts/
+./app/static/fonts/glyphicons-halflings-regular.woff2
+./app/static/fonts/glyphicons-halflings-regular.svg
+./app/static/fonts/glyphicons-halflings-regular.eot
+./app/static/fonts/glyphicons-halflings-regular.woff
+./app/static/fonts/glyphicons-halflings-regular.ttf
+./app/util/
+./app/util/init_db.py
+./app/util/__init__.py
+./app/routes.py
+./app/templates/
+./app/templates/newgossip.html
+./app/templates/gossip.html
+./app/templates/login.html
+./app/templates/gossips.html
+./app/templates/register.html
+./app/config.py
+./app/requirements.txt
+./app/model/
+./app/model/password.py
+./app/model/db.py
+./app/model/__init__.py
+./app/model/log.py
+./Makefile
+./deployments/
+./deployments/docker-compose.yml
+./deployments/Dockerfile
+./deployments/check-init.sh
+./images/
+./images/attack-4.png
+./images/attack-7.png
+./images/attack-5.png
+./images/attack-8.png
+./images/attack-6.png
+./images/banner.png
+./images/attack-1.png
+./images/attack-9.png
+./images/attack-3.png
+./images/attack-2.png
+./README.md
++ ssh-keygen -t rsa -N  -f /var/jenkins_home/.ssh/devsecops
+Generating public/private rsa key pair.
+/var/jenkins_home/.ssh/devsecops already exists.
+Overwrite (y/n)? + true
++ mkdir /var/jenkins_home/.aws/
+mkdir: cannot create directory ‘/var/jenkins_home/.aws/’: File exists
++ true
++ rm /var/jenkins_home/.aws/credentials
++ echo [default]
++ echo aws_access_key_id = XXXXXXXXXXXXXXXXXXXX
++ echo aws_secret_access_key = XXXXXXXXXXXXXXXXXXXX
++ ansible-playbook -i /var/jenkins_home/ansible_hosts /var/jenkins_home/createAwsEc2.yml
+
+PLAY [Create a sandbox instance] ***********************************************
+
+TASK [Upload public key to AWS] ************************************************
+ok: [localhost]
+
+TASK [Launch instance] *********************************************************
+changed: [localhost]
+
+TASK [Add new instance to hosts group for test] ********************************
+changed: [localhost] => (item={'id': 'i-0ddbaf9484e07fecc', 'ami_launch_index': '0', 'private_ip': '172.31.11.236', 'private_dns_name': 'ip-172-31-11-236.eu-west-2.compute.internal', 'public_ip': '18.133.120.114', 'dns_name': 'ec2-18-133-120-114.eu-west-2.compute.amazonaws.com', 'public_dns_name': 'ec2-18-133-120-114.eu-west-2.compute.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0be057a22c63962cb', 'key_name': 'devsecops', 'placement': 'eu-west-2c', 'region': 'eu-west-2', 'kernel': None, 'ramdisk': None, 'launch_time': '2021-03-01T08:28:28.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'Name': 'DevSecOps'}, 'groups': {'sg-0db367b916b07d826': 'devsecops-python'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-0d049dce5daaac4e8', 'delete_on_termination': True}}, 'tenancy': 'default'})
+
+TASK [Wait for SSH to come up] *************************************************
+ok: [localhost] => (item={'id': 'i-0ddbaf9484e07fecc', 'ami_launch_index': '0', 'private_ip': '172.31.11.236', 'private_dns_name': 'ip-172-31-11-236.eu-west-2.compute.internal', 'public_ip': '18.133.120.114', 'dns_name': 'ec2-18-133-120-114.eu-west-2.compute.amazonaws.com', 'public_dns_name': 'ec2-18-133-120-114.eu-west-2.compute.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0be057a22c63962cb', 'key_name': 'devsecops', 'placement': 'eu-west-2c', 'region': 'eu-west-2', 'kernel': None, 'ramdisk': None, 'launch_time': '2021-03-01T08:28:28.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'Name': 'DevSecOps'}, 'groups': {'sg-0db367b916b07d826': 'devsecops-python'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-0d049dce5daaac4e8', 'delete_on_termination': True}}, 'tenancy': 'default'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ sed -n /tstlaunched/{n;p;} /var/jenkins_home/ansible_hosts
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] echo
+18.133.120.114
+[Pipeline] sh
++ ansible-playbook -i /var/jenkins_home/ansible_hosts --extra-vars=ansible_ssh_private_key_file=~/.ssh/devsecops /var/jenkins_home/configureTestEnv.yml
+
+PLAY [Configure instance(s)] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [18.133.120.114]
+
+TASK [update package manager] **************************************************
+changed: [18.133.120.114]
+
+TASK [Install docker] **********************************************************
+changed: [18.133.120.114]
+
+TASK [Install docker-compose] **************************************************
+changed: [18.133.120.114]
+
+TASK [Install kbtin for lynis to produce html report] **************************
+changed: [18.133.120.114]
+
+TASK [Install make to build the pythonapp] *************************************
+changed: [18.133.120.114]
+
+TASK [Copy the zip file of project] ********************************************
+changed: [18.133.120.114]
+
+TASK [Create directory for unarchiving app] ************************************
+changed: [18.133.120.114]
+
+TASK [Unzip it] ****************************************************************
+changed: [18.133.120.114]
+
+TASK [Run the application with docker] *****************************************
+changed: [18.133.120.114]
+
+PLAY RECAP *********************************************************************
+18.133.120.114             : ok=10   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (DAST)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ python3 /var/jenkins_home/authDAST.py selenium-chrome 18.133.120.114 /var/jenkins_home/workspace/DevSecOps-pipeline-python/jenkins-DevSecOps-pipeline-python-3/DAST_results.html
+we're at: http://18.133.120.114:10007/register
+creating a user..
+created user
+we're at: http://18.133.120.114:10007/login
+logged in successfully.. getting cookie
+added cookie to nikto config file to carry out authenticated scan..
+- Nikto v2.1.5
+---------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (System security audit)
+[Pipeline] echo
+Run lynis audit on host and fetch result
+[Pipeline] sh
++ ansible-playbook -i /var/jenkins_home/ansible_hosts /var/jenkins_home/hostaudit.yml --extra-vars=ansible_ssh_private_key_file=~/.ssh/devsecops --extra-vars logfolder=/var/jenkins_home/workspace/DevSecOps-pipeline-python/jenkins-DevSecOps-pipeline-python-3/
+
+PLAY [Run host audit in instance(s)] *******************************************
+
+TASK [Get the lynis installer] *************************************************
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 18.133.120.114 should 
+use /usr/bin/python3, but is using /usr/bin/python for backward compatibility 
+with prior Ansible releases. A future Ansible release will default to using the
+ discovered platform python for this host. See https://docs.ansible.com/ansible
+/2.10/reference_appendices/interpreter_discovery.html for more information. 
+This feature will be removed in version 2.12. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [18.133.120.114]
+
+TASK [Unzip it] ****************************************************************
+changed: [18.133.120.114]
+
+TASK [Run system audit] ********************************************************
+changed: [18.133.120.114]
+
+TASK [Fetch log file from host] ************************************************
+changed: [18.133.120.114]
+
+TASK [Fetch report file from host] *********************************************
+changed: [18.133.120.114]
+
+TASK [Fetch fancy html report] *************************************************
+changed: [18.133.120.114]
+
+TASK [Remove html report on host] **********************************************
+changed: [18.133.120.114]
+
+TASK [Remove log file on host] *************************************************
+changed: [18.133.120.114]
+
+TASK [Remove report on host] ***************************************************
+changed: [18.133.120.114]
+
+PLAY RECAP *********************************************************************
+18.133.120.114             : ok=9    changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy WAF)
+[Pipeline] echo
+Deploy modsecurity as reverse proxy
+[Pipeline] sh
++ ansible-playbook -i /var/jenkins_home/ansible_hosts /var/jenkins_home/configureWAF.yml --extra-vars=ansible_ssh_private_key_file=~/.ssh/devsecops
+
+PLAY [Configure instance(s)] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 18.133.120.114 should 
+use /usr/bin/python3, but is using /usr/bin/python for backward compatibility 
+with prior Ansible releases. A future Ansible release will default to using the
+ discovered platform python for this host. See https://docs.ansible.com/ansible
+/2.10/reference_appendices/interpreter_discovery.html for more information. 
+This feature will be removed in version 2.12. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [18.133.120.114]
+
+TASK [Run the WAF on docker] ***************************************************
+[DEPRECATION WARNING]: The container_default_behavior option will change its 
+default value from "compatibility" to "no_defaults" in community.docker 2.0.0. 
+To remove this warning, please specify an explicit value for it now. This 
+feature will be removed from community.docker in version 2.0.0. Deprecation 
+warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [18.133.120.114]
+
+PLAY RECAP *********************************************************************
+18.133.120.114             : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+We could bring down the ec2 here
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

@@ -1,0 +1,25 @@
+version: "3"
+services:
+  jenkins-master:
+    build:
+      context: ./jenkins
+    restart: always  
+    ports:
+      - "50000:50000"
+      - "8080:8080"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    container_name: jenkins-master
+    environment:
+      - "Jenkins_PW=${Jenkins_PW}"
+      - "JAVA_OPTS=${JAVA_OPTS}"
+      - "JenkinsPublicHostname=${JenkinsPublicHostname}"
+      - "SeleniumPrivateIp=${SeleniumPrivateIp}"
+  selenium-chrome:
+    image: selenium/standalone-chrome
+    restart: always
+    container_name: selenium-chrome
+    ports:
+      - "4444:4444"
+    volumes:
+      - "/dev/shm:/dev/shm"

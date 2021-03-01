@@ -1,0 +1,271 @@
+2021-03-01 08:28:16 Starting Lynis 2.7.5 with PID 4189, build date 2019-06-24
+2021-03-01 08:28:16 ===---------------------------------------------------------------===
+2021-03-01 08:28:16 ### 2007-2019, CISOfy - https://cisofy.com/lynis/ ###
+2021-03-01 08:28:16 Checking permissions of /var/jenkins_home/lynis/include/profiles
+2021-03-01 08:28:17 File permissions are OK
+2021-03-01 08:28:17 Reading profile/configuration /var/jenkins_home/lynis/default.prf
+2021-03-01 08:28:17 Action: created temporary file /tmp/lynis.5oYLdgS4pV
+2021-03-01 08:28:17 Language set via profile to ''
+2021-03-01 08:28:17 Plugin 'authentication' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'compliance' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'configuration' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'control-panels' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'crypto' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'dns' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'docker' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'file-integrity' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'file-systems' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'firewalls' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'forensics' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'hardware' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'intrusion-detection' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'intrusion-prevention' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'kernel' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'malware' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'memory' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'nginx' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'pam' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'processes' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'security-modules' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'software' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'system-integrity' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'systemd' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Plugin 'users' enabled according profile (/var/jenkins_home/lynis/default.prf)
+2021-03-01 08:28:17 Set option to default value: NTPD_ROLE --> client
+2021-03-01 08:28:17 ===---------------------------------------------------------------===
+2021-03-01 08:28:17 ===---------------------------------------------------------------===
+2021-03-01 08:28:17 EOL check: 255
+2021-03-01 08:28:17 Note: the end-of-life of 'Debian 10.8' could not be checked. Entry missing in software-eol.db?
+2021-03-01 08:28:17 Program version:           2.7.5
+2021-03-01 08:28:17 Operating system:          Linux
+2021-03-01 08:28:17 Operating system name:     Debian
+2021-03-01 08:28:17 Operating system version:  10.8
+2021-03-01 08:28:17 Kernel version:            5.0.0
+2021-03-01 08:28:17 Kernel version (full):     5.0.0-32-generic
+2021-03-01 08:28:17 Hardware platform:         x86_64
+2021-03-01 08:28:17 -----------------------------------------------------
+2021-03-01 08:28:17 Hostname:                  daaeb5e00ea6
+2021-03-01 08:28:17 Auditor:                   [Not Specified]
+2021-03-01 08:28:17 Profiles:                  /var/jenkins_home/lynis/default.prf
+2021-03-01 08:28:17 Work directory:            /var/jenkins_home/lynis
+2021-03-01 08:28:17 Include directory:         /var/jenkins_home/lynis/include
+2021-03-01 08:28:17 Plugin directory:          ./plugins
+2021-03-01 08:28:17 -----------------------------------------------------
+2021-03-01 08:28:17 Log file:                  /tmp/lynis.log
+2021-03-01 08:28:17 Report file:               /tmp/lynis-report.dat
+2021-03-01 08:28:17 Report version:            1.0
+2021-03-01 08:28:17 -----------------------------------------------------
+2021-03-01 08:28:17 Test category:             all
+2021-03-01 08:28:17 Test group:                all
+2021-03-01 08:28:17 BusyBox used:              0
+2021-03-01 08:28:17 ===---------------------------------------------------------------===
+2021-03-01 08:28:17 Test: Checking for program update...
+2021-03-01 08:28:17 Result: dig, drill or host not installed, update check skipped
+2021-03-01 08:28:17 Current installed version  : 275
+2021-03-01 08:28:17 Latest stable version      : 0000000000
+2021-03-01 08:28:17 Update check skipped due to constraints (e.g. missing dig binary)
+2021-03-01 08:28:17 Suggestion: This release is more than 4 months old. Consider upgrading [test:LYNIS] [details:-] [solution:-]
+2021-03-01 08:28:22 ===---------------------------------------------------------------===
+2021-03-01 08:28:22 Checking permissions of /var/jenkins_home/lynis/include/binaries
+2021-03-01 08:28:22 File permissions are OK
+2021-03-01 08:28:22 ===---------------------------------------------------------------===
+2021-03-01 08:28:22 Action: Performing tests from category: System Tools
+2021-03-01 08:28:22 Start scanning for available audit binaries and tools...
+2021-03-01 08:28:22 ===---------------------------------------------------------------===
+2021-03-01 08:28:22 Performing test ID CORE-1000 (Check all system binaries)
+2021-03-01 08:28:22 Status: Starting binary scan...
+2021-03-01 08:28:22 Test: Checking binaries in directory /bin
+2021-03-01 08:28:22 Directory /bin exists. Starting directory scanning...
+2021-03-01 08:28:22   Found known binary: cat (generic file handling) - /bin/cat
+2021-03-01 08:28:22   Found known binary: dnsdomainname (DNS domain) - /bin/dnsdomainname
+2021-03-01 08:28:22   Found known binary: domainname (NIS domain) - /bin/domainname
+2021-03-01 08:28:22   Found known binary: egrep (text search) - /bin/egrep
+2021-03-01 08:28:22   Found known binary: grep (text search) - /bin/grep
+2021-03-01 08:28:22   Found known binary: gzip (compressing utility) - /bin/gzip
+2021-03-01 08:28:22   Found known binary: ip (IP configuration) - /bin/ip
+2021-03-01 08:28:22   Found known binary: journalctl (systemd journal) - /bin/journalctl
+2021-03-01 08:28:22   Found known binary: ls (file listing) - /bin/ls
+2021-03-01 08:28:22   Found known binary: mount (disk utility) - /bin/mount
+2021-03-01 08:28:22   Found known binary: ps (process listing) - /bin/ps
+2021-03-01 08:28:22   Found known binary: readlink (follows symlinks) - /bin/readlink
+2021-03-01 08:28:22   Found known binary: sed (text stream editor) - /bin/sed
+2021-03-01 08:28:22   Found known binary: ss (show sockets) - /bin/ss
+2021-03-01 08:28:22   Found known binary: systemctl (client to systemd) - /bin/systemctl
+2021-03-01 08:28:22   Found known binary: uname (operating system details) - /bin/uname
+2021-03-01 08:28:22   Found known binary: zgrep (text search for compressed files) - /bin/zgrep
+2021-03-01 08:28:22 Test: Checking binaries in directory /sbin
+2021-03-01 08:28:22 Directory /sbin exists. Starting directory scanning...
+2021-03-01 08:28:22   Found known binary: blkid (information about block devices) - /sbin/blkid
+2021-03-01 08:28:22   Found known binary: getcap (kernel capabilities) - /sbin/getcap
+2021-03-01 08:28:22   Found known binary: ip (IP configuration) - /sbin/ip
+2021-03-01 08:28:22   Found known binary: runlevel (system utility) - /sbin/runlevel
+2021-03-01 08:28:22   Found known binary: sysctl (kernel parameters) - /sbin/sysctl
+2021-03-01 08:28:22   Found known binary: tune2fs (file system tool) - /sbin/tune2fs
+2021-03-01 08:28:22 Test: Checking binaries in directory /usr/bin
+2021-03-01 08:28:22 Directory /usr/bin exists. Starting directory scanning...
+2021-03-01 08:28:22   Found known binary: apt (package manager) - /usr/bin/apt
+2021-03-01 08:28:22   Found known binary: as (compiler) - /usr/bin/as
+2021-03-01 08:28:22   Found known binary: awk (string tool) - /usr/bin/awk
+2021-03-01 08:28:22   Found known binary: base64 (encoding tool) - /usr/bin/base64
+2021-03-01 08:28:22   Found known binary: bootctl (systemd-boot manager utility) - /usr/bin/bootctl
+2021-03-01 08:28:22   Found known binary: cc (compiler) - /usr/bin/cc
+2021-03-01 08:28:22   Found known binary: comm (file compare) - /usr/bin/comm
+2021-03-01 08:28:23   Found known binary: curl (browser, download utility) - /usr/bin/curl
+2021-03-01 08:28:23   Found known binary: cut (text stream editor) - /usr/bin/cut
+2021-03-01 08:28:23   Found known binary: dpkg (package management) - /usr/bin/dpkg
+2021-03-01 08:28:23   Found known binary: file (file type detection) - /usr/bin/file
+2021-03-01 08:28:23   Found known binary: find (search tool) - /usr/bin/find
+2021-03-01 08:28:23   Found known binary: g++ (compiler) - /usr/bin/g++
+2021-03-01 08:28:23   Found known binary: gcc (compiler) - /usr/bin/gcc
+2021-03-01 08:28:23   Found known binary: getent (query tool for name service switch libraries) - /usr/bin/getent
+2021-03-01 08:28:23   Found known binary: head (text filter) - /usr/bin/head
+2021-03-01 08:28:23   Found known binary: lsattr (file attributes) - /usr/bin/lsattr
+2021-03-01 08:28:23   Found known binary: md5sum (hash tool) - /usr/bin/md5sum
+2021-03-01 08:28:23 Found /usr/bin/openssl (version 1.1.1d)
+2021-03-01 08:28:23 Found /usr/bin/perl (version 5.28.1)
+2021-03-01 08:28:23   Found known binary: pgrep (search in process list) - /usr/bin/pgrep
+2021-03-01 08:28:23 Found known binary: python (programming language interpreter) - /usr/bin/python (version ./lynis: 200: /var/jenkins_home/lynis/include/binaries: /usr/bin/python: not found)
+2021-03-01 08:28:23 Found known binary: python2 (programming language interpreter) - /usr/bin/python2 (version 2.7.16)
+2021-03-01 08:28:23 Found known binary: python3 (programming language interpreter) - /usr/bin/python3 (version 3.7.3)
+2021-03-01 08:28:23   Found known binary: sha1/sha1sum/shasum (crypto hashing) - /usr/bin/sha1sum
+2021-03-01 08:28:23   Found known binary: sha256/sha256sum (crypto hashing) - /usr/bin/sha256sum
+2021-03-01 08:28:23   Found known binary: sha1/sha1sum/shasum (crypto hashing) - /usr/bin/shasum
+2021-03-01 08:28:23   Found known binary: sort (sort data streams) - /usr/bin/sort
+2021-03-01 08:28:23   Found known binary: ssh-keyscan (scanner for SSH keys) - /usr/bin/ssh-keyscan
+2021-03-01 08:28:23   Found known binary: stat (file information) - /usr/bin/stat
+2021-03-01 08:28:23   Found known binary: strings (text strings search) - /usr/bin/strings
+2021-03-01 08:28:23   Found known binary: timedatectl (timedate client) - /usr/bin/timedatectl
+2021-03-01 08:28:23   Found known binary: tr (text transformation) - /usr/bin/tr
+2021-03-01 08:28:23   Found known binary: uniq (text manipulation utility) - /usr/bin/uniq
+2021-03-01 08:28:23   Found known binary: wc (word count) - /usr/bin/wc
+2021-03-01 08:28:23 Found /usr/bin/wget (version 1.20.1)
+2021-03-01 08:28:23   Found known binary: xargs (command output redirection) - /usr/bin/xargs
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/sbin
+2021-03-01 08:28:23 Directory /usr/sbin exists. Starting directory scanning...
+2021-03-01 08:28:23   Found known binary: grpck (consistency checker) - /usr/sbin/grpck
+2021-03-01 08:28:23   Found known binary: service (system services) - /usr/sbin/service
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/local/bin
+2021-03-01 08:28:23 Directory /usr/local/bin exists. Starting directory scanning...
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/local/sbin
+2021-03-01 08:28:23 Directory /usr/local/sbin exists. Starting directory scanning...
+2021-03-01 08:28:23 Test: Checking binaries in directory /opt/java/openjdk/bin
+2021-03-01 08:28:23 Directory /opt/java/openjdk/bin exists. Starting directory scanning...
+2021-03-01 08:28:23 Test: Checking binaries in directory /bin
+2021-03-01 08:28:23 Result: Skipping this directory as it was already scanned
+2021-03-01 08:28:23 Result: Directory /bin skipped
+2021-03-01 08:28:23 Test: Checking binaries in directory /sbin
+2021-03-01 08:28:23 Result: Skipping this directory as it was already scanned
+2021-03-01 08:28:23 Result: Directory /sbin skipped
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/bin
+2021-03-01 08:28:23 Result: Skipping this directory as it was already scanned
+2021-03-01 08:28:23 Result: Directory /usr/bin skipped
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/sbin
+2021-03-01 08:28:23 Result: Skipping this directory as it was already scanned
+2021-03-01 08:28:23 Result: Directory /usr/sbin skipped
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/local/bin
+2021-03-01 08:28:23 Result: Skipping this directory as it was already scanned
+2021-03-01 08:28:23 Result: Directory /usr/local/bin skipped
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/local/sbin
+2021-03-01 08:28:23 Result: Skipping this directory as it was already scanned
+2021-03-01 08:28:23 Result: Directory /usr/local/sbin skipped
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/local/libexec
+2021-03-01 08:28:23 Result: Directory /usr/local/libexec does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/libexec
+2021-03-01 08:28:23 Result: Directory /usr/libexec does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/sfw/bin
+2021-03-01 08:28:23 Result: Directory /usr/sfw/bin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/sfw/sbin
+2021-03-01 08:28:23 Result: Directory /usr/sfw/sbin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/sfw/libexec
+2021-03-01 08:28:23 Result: Directory /usr/sfw/libexec does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /opt/sfw/bin
+2021-03-01 08:28:23 Result: Directory /opt/sfw/bin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /opt/sfw/sbin
+2021-03-01 08:28:23 Result: Directory /opt/sfw/sbin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /opt/sfw/libexec
+2021-03-01 08:28:23 Result: Directory /opt/sfw/libexec does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/xpg4/bin
+2021-03-01 08:28:23 Result: Directory /usr/xpg4/bin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/css/bin
+2021-03-01 08:28:23 Result: Directory /usr/css/bin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/ucb
+2021-03-01 08:28:23 Result: Directory /usr/ucb does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/X11R6/bin
+2021-03-01 08:28:23 Result: Directory /usr/X11R6/bin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/X11R7/bin
+2021-03-01 08:28:23 Result: Directory /usr/X11R7/bin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/pkg/bin
+2021-03-01 08:28:23 Result: Directory /usr/pkg/bin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/pkg/sbin
+2021-03-01 08:28:23 Result: Directory /usr/pkg/sbin does NOT exist
+2021-03-01 08:28:23 Test: Checking binaries in directory /usr/gnu/bin
+2021-03-01 08:28:23 Result: Directory /usr/gnu/bin does NOT exist
+2021-03-01 08:28:23 Discovered directories: /bin,/sbin,/usr/bin,/usr/sbin,/usr/local/bin,/usr/local/sbin,/opt/java/openjdk/bin
+2021-03-01 08:28:23 Result: found 940 binaries
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Test: Determine if this system is a virtual machine
+2021-03-01 08:28:23 Result: facter utility not found
+2021-03-01 08:28:23 Test: trying to guess virtualization technology with systemd-detect-virt
+2021-03-01 08:28:23 Result: found none
+2021-03-01 08:28:23 Result: skipped lscpu test, as we already found machine type
+2021-03-01 08:28:23 Result: skipped dmidecode test, as we already found machine type
+2021-03-01 08:28:23 Result: skipped processes test, as we already found platform
+2021-03-01 08:28:23 Result: skipped Amazon EC2 test, as we already found platform
+2021-03-01 08:28:23 Result: skipped sysctl test, as we already found platform
+2021-03-01 08:28:23 Result: skipped lshw test, as we already found machine type
+2021-03-01 08:28:23 Result: Unknown virtualization type, so most likely system is physical
+2021-03-01 08:28:23 Result: unknown if this system is a virtual machine
+2021-03-01 08:28:23 Result: found Docker in control groups (/proc/1/cgroup), so we are running in Docker container
+2021-03-01 08:28:23 Result: Lynis is running in container (Docker)
+2021-03-01 08:28:23 Result: systemd not found
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Info: using hardware address 02:42:ac:16:00:03 to create ID
+2021-03-01 08:28:23 Result: Found HostID: 655b6bfe5059ad5dc8bba308dabe61094ebbcc4e
+2021-03-01 08:28:23 Info: creating a HostID (version 2)
+2021-03-01 08:28:23 Info: found valid HostID 655b6bfe5059ad5dc8bba308dabe61094ebbcc4e
+2021-03-01 08:28:23 Info: no machine ID found
+2021-03-01 08:28:23 Helper tool is audit_dockerfile
+2021-03-01 08:28:23 Checking permissions of /var/jenkins_home/lynis/include/helper_audit_dockerfile
+2021-03-01 08:28:23 File permissions are OK
+2021-03-01 08:28:23 Running helper tool audit_dockerfile with params: /var/jenkins_home/workspace/DevSecOps-pipeline-python/gossip-world/deployments/Dockerfile
+2021-03-01 08:28:23 Action: Performing plugin tests
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Action: Performing tests from category: Image
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Action: Performing tests from category: Basics
+2021-03-01 08:28:23 Warning: No maintainer found. Unclear who created this file. [test:dockerfile] [details:-] [solution:-]
+2021-03-01 08:28:23 Warning: No ENTRYPOINT defined in Dockerfile. [test:dockerfile] [details:-] [solution:-]
+2021-03-01 08:28:23 Warning: No user declared in Dockerfile. Container will execute command as root [test:dockerfile] [details:-] [solution:-]
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Action: Performing tests from category: Software
+2021-03-01 08:28:23 Unknown package manager
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Action: Performing tests from category: Downloads
+2021-03-01 08:28:23 Checking usage of cURL
+2021-03-01 08:28:23 Checking usage of wget
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Action: Performing tests from category: Permissions
+2021-03-01 08:28:23 Action: Removing temporary file 
+2021-03-01 08:28:23 Checking permissions of /var/jenkins_home/lynis/include/report
+2021-03-01 08:28:23 File permissions are OK
+2021-03-01 08:28:23 Hardening index : [1] [#                   ]
+2021-03-01 08:28:23 Hardening strength: System has not or a low amount been hardened
+2021-03-01 08:28:23 ===---------------------------------------------------------------===
+2021-03-01 08:28:23 Checking permissions of /var/jenkins_home/lynis/include/tool_tips
+2021-03-01 08:28:23 File permissions are OK
+2021-03-01 08:28:23 Tool tips: enabled
+2021-03-01 08:28:23 ================================================================================
+2021-03-01 08:28:23 Tests performed:     1
+2021-03-01 08:28:23 Total tests:         1
+2021-03-01 08:28:23 Active plugins:      0
+2021-03-01 08:28:23 Total plugins:       0
+2021-03-01 08:28:23 ================================================================================
+2021-03-01 08:28:23 Lynis 2.7.5
+2021-03-01 08:28:23 2007-2019, CISOfy - https://cisofy.com/lynis/
+2021-03-01 08:28:23 Enterprise support available (compliance, plugins, interface and tools)
+2021-03-01 08:28:23 Program ended successfully
+2021-03-01 08:28:23 ================================================================================
+2021-03-01 08:28:23 PID file removed (/var/jenkins_home/lynis.pid)
+2021-03-01 08:28:23 Temporary files:  /tmp/lynis.5oYLdgS4pV
+2021-03-01 08:28:23 Action: removing temporary file /tmp/lynis.5oYLdgS4pV
+2021-03-01 08:28:23 Lynis ended successfully.

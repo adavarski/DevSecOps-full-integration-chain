@@ -1,0 +1,19 @@
+# Configure launched instance for WAF
+- name: Configure instance(s)
+  hosts: tstlaunched
+  become: True
+  remote_user: ubuntu
+  gather_facts: True
+  tasks:    
+    - name: Run the WAF on docker
+      docker_container:
+        name: modsecurity_waf
+        image: owasp/modsecurity-crs
+        state: started
+        restart_policy: always
+        ports:
+         - "80:80"
+        env:
+            PARANOIA: "2"
+            PROXY: "1"
+            PROXYLOCATION: "http://{{ ansible_default_ipv4.address }}:10007/"

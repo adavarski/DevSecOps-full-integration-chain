@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+ <title>Nikto Report</title>
+ <style type="text/css">
+  .dataTable
+  {
+   font-family: tahoma, sans-serif;
+   font-size: 11pt; 
+   font-weight: normal; 
+   color: #000066;
+   background: #EEEEEE;
+   border: thin solid black;
+  }
+  .headerTable
+  {
+   font-family: tahoma, sans-serif;
+   font-size: 15pt; 
+   font-weight: normal; 
+   color: white;
+   background: #000066;
+   border: thin solid black;
+  }
+  .column-head
+  {
+   width: 15em;
+  }
+  .copyright
+  {
+   font-family: tahoma, sans-serif;
+   font-size: 10pt;
+   font-weight: normal;
+   font-style: italic;
+   color: black;
+  }
+  body
+  {
+   background: white;
+  }
+ </style>
+</head>
+<body>
+<div>
+<a name="1"></a><table class="headerTable" width="300"><tr><td>ec2-18-133-120-114.eu-west-2.compute.amazonaws.com / 18.133.120.114 port 10007</td></tr></table>
+<table width="95%" class="dataTable">
+ <tr>
+   <td class="column-head" valign="top"><b>Target IP</b></td>
+   <td>18.133.120.114</td>
+ </tr>
+ <tr>
+   <td class="column-head"><b>Target hostname</b></td>
+   <td>ec2-18-133-120-114.eu-west-2.compute.amazonaws.com</td>
+ </tr>
+  <tr>
+   <td class="column-head"><b>Target Port</b></td>
+   <td>10007</td>
+ </tr>
+  <tr>
+   <td class="column-head"><b>HTTP Server</b></td>
+   <td>Werkzeug/0.14.1 Python/3.9.2</td>
+ </tr>
+ <tr>
+   <td class="column-head"><b>Site Link (Name)</b></td>
+   <td>
+     <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip</a>
+    </td>
+ </tr>
+ <tr>
+   <td class="column-head"><b>Site Link (IP)</b></td>
+   <td>
+     <a href="http://18.133.120.114:10007/gossip">http://18.133.120.114:10007/gossip</a>
+   </td>
+ </tr>
+ </table>
+</div>
+<p></p>
+
+<table  class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>URI</b></td>
+    <td>/gossip/gossip/</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>HTTP Method</b></td>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Description</b></td>
+    <td>The anti-clickjacking X-Frame-Options header is not present.</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Test Links</b></td>
+    <td>
+      <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/</a><br>
+      <a href="http://18.133.120.114:10007/gossip/gossip/">http://18.133.120.114:10007/gossip/gossip/</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>OSVDB Entries</b></td>
+    <td>
+       <a href="http://osvdb.org/0" title="More vuln information on OSVDB.org">OSVDB-0</a>
+    </td>
+</table>
+
+<table  class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>URI</b></td>
+    <td>/gossip/gossip/cdQDPpVm.tw</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>HTTP Method</b></td>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Description</b></td>
+    <td>Cookie session created without the httponly flag</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Test Links</b></td>
+    <td>
+      <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/cdQDPpVm.tw">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/cdQDPpVm.tw</a><br>
+      <a href="http://18.133.120.114:10007/gossip/gossip/cdQDPpVm.tw">http://18.133.120.114:10007/gossip/gossip/cdQDPpVm.tw</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>OSVDB Entries</b></td>
+    <td>
+       <a href="http://osvdb.org/0" title="More vuln information on OSVDB.org">OSVDB-0</a>
+    </td>
+</table>
+
+<table  class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>URI</b></td>
+    <td>/gossip/images</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>HTTP Method</b></td>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Description</b></td>
+    <td>IIS may reveal its internal or real IP in the Location header via a request to the /images directory. The value is &quot;http://0.0.0.0:10007/login&quot;.</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Test Links</b></td>
+    <td>
+      <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/images">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/images</a><br>
+      <a href="http://18.133.120.114:10007/gossip/images">http://18.133.120.114:10007/gossip/images</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>OSVDB Entries</b></td>
+    <td>
+       <a href="http://osvdb.org/630" title="More vuln information on OSVDB.org">OSVDB-630</a>
+    </td>
+</table>
+
+<table  class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>URI</b></td>
+    <td>/gossip/gossip/_vti_bin/shtml.dll/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>HTTP Method</b></td>
+    <td>POST</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Description</b></td>
+    <td>/gossip/_vti_bin/shtml.dll/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611: Gives info about server settings. CVE-2000-0413, CVE-2000-0709, CVE-2000-0710, BID-1608, BID-1174.</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Test Links</b></td>
+    <td>
+      <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/shtml.dll/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/shtml.dll/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611</a><br>
+      <a href="http://18.133.120.114:10007/gossip/gossip/_vti_bin/shtml.dll/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611">http://18.133.120.114:10007/gossip/gossip/_vti_bin/shtml.dll/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>OSVDB Entries</b></td>
+    <td>
+       <a href="http://osvdb.org/28260" title="More vuln information on OSVDB.org">OSVDB-28260</a>
+    </td>
+</table>
+
+<table  class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>URI</b></td>
+    <td>/gossip/gossip/_vti_bin/shtml.exe/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>HTTP Method</b></td>
+    <td>POST</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Description</b></td>
+    <td>/gossip/_vti_bin/shtml.exe/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611: Gives info about server settings.</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Test Links</b></td>
+    <td>
+      <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/shtml.exe/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/shtml.exe/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611</a><br>
+      <a href="http://18.133.120.114:10007/gossip/gossip/_vti_bin/shtml.exe/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611">http://18.133.120.114:10007/gossip/gossip/_vti_bin/shtml.exe/_vti_rpc?method=server+version%3a4%2e0%2e2%2e2611</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>OSVDB Entries</b></td>
+    <td>
+       <a href="http://osvdb.org/28260" title="More vuln information on OSVDB.org">OSVDB-28260</a>
+    </td>
+</table>
+
+<table  class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>URI</b></td>
+    <td>/gossip/gossip/_vti_bin/_vti_aut/author.dll?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>HTTP Method</b></td>
+    <td>POST</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Description</b></td>
+    <td>/gossip/_vti_bin/_vti_aut/author.dll?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals: We seem to have authoring access to the FrontPage web.</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Test Links</b></td>
+    <td>
+      <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/_vti_aut/author.dll?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/_vti_aut/author.dll?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals</a><br>
+      <a href="http://18.133.120.114:10007/gossip/gossip/_vti_bin/_vti_aut/author.dll?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals">http://18.133.120.114:10007/gossip/gossip/_vti_bin/_vti_aut/author.dll?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>OSVDB Entries</b></td>
+    <td>
+       <a href="http://osvdb.org/3092" title="More vuln information on OSVDB.org">OSVDB-3092</a>
+    </td>
+</table>
+
+<table  class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>URI</b></td>
+    <td>/gossip/gossip/_vti_bin/_vti_aut/author.exe?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>HTTP Method</b></td>
+    <td>POST</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Description</b></td>
+    <td>/gossip/_vti_bin/_vti_aut/author.exe?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals: We seem to have authoring access to the FrontPage web.</td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>Test Links</b></td>
+    <td>
+      <a href="http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/_vti_aut/author.exe?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals">http://ec2-18-133-120-114.eu-west-2.compute.amazonaws.com:10007/gossip/gossip/_vti_bin/_vti_aut/author.exe?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals</a><br>
+      <a href="http://18.133.120.114:10007/gossip/gossip/_vti_bin/_vti_aut/author.exe?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals">http://18.133.120.114:10007/gossip/gossip/_vti_bin/_vti_aut/author.exe?method=list+documents%3a3%2e0%2e2%2e1706&service%5fname=&listHiddenDocs=true&listExplorerDocs=true&listRecurse=false&listFiles=true&listFolders=true&listLinkInfo=true&listIncludeParent=true&listDerivedT=false&listBorders=fals</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="column-head" valign="top"><b>OSVDB Entries</b></td>
+    <td>
+       <a href="http://osvdb.org/3092" title="More vuln information on OSVDB.org">OSVDB-3092</a>
+    </td>
+</table>
+
+<div>
+<p></p>
+<table class="headerTable" width="300"><tr><td>Host Summary</td></tr></table>
+<table  class="dataTable" width="95%">
+ <tr>
+   <td class="column-head"><b>Start Time</b></td>
+   <td>2021-03-01 08:36:35</td>
+ </tr>
+  <tr>
+   <td class="column-head"><b>End Time</b></td>
+   <td>2021-03-01 08:47:26</td>
+ </tr>
+  <tr>
+   <td class="column-head"><b>Elapsed Time</b></td>
+   <td>651 seconds</td>
+ </tr>
+ <tr>
+   <td class="column-head"><b>Statistics</b></td>
+   <td>6544 items checked, 0 errors, 7 findings</td>
+ </tr>
+</table>
+</div>
+<p></p>
+
+<p></p>
+<table class="headerTable" width="300"><tr><td>Scan Summary</td></tr></table>
+<table class="dataTable" width="95%">
+  <tr>
+    <td class="column-head" valign="top"><b>Software Details</b></td>
+    <td><a href="http://cirt.net/">Nikto 2.1.5</a></td>
+  <tr>
+    <td><b>CLI Options</b></td>
+    <td>-ask no -Format html -h http://18.133.120.114:10007/gossip -output /var/jenkins_home/workspace/DevSecOps-pipeline-python/jenkins-DevSecOps-pipeline-python-3/DAST_results.html</td>
+  </tr>
+  <tr>
+    <td><b>Hosts Tested</b></td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><b>Start Time</b></td>
+    <td>Mon Mar  1 08:36:34 2021</td>
+  </tr>
+  <tr>
+    <td><b>End Time</b></td>
+    <td>Mon Mar  1 08:47:26 2021</td>
+  </tr>
+  <tr>
+    <td><b>Elapsed Time</b></td>
+    <td>652 seconds</td>
+  </tr>
+</table>
+<p></p>
+<p class="copyright">&copy; 2008 CIRT, Inc.</p>
+
+<!-- (c) 2008 CIRT, Inc. -->
+
+</body>
+</html>
+
