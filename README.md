@@ -185,10 +185,6 @@ Docker, docker-compose, Ansible, Tags, Playbooks, Roles, Galaxy, Jenkins, Shared
 + [Example: A Jenkins end-to-end DevSecOps pipeline for Python web application (docker based)](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/9-jenkins-pipeline-python-end-to-end):
   Jenkins instance/environment hosted on AWS EC2 (Ubuntu 18.04) or local environment (on your laptop/workstation/on-prem ubuntu server).
   
-<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-full.png" width="900">
-
-<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-steps-UI.png" width="900">
-
   + Checkout project - check out python application project repository with XSS vulnerability (https://github.com/adavarski/Python-app-DevSecOps-XSS)
   + git secret check - check there is no password/token/keys/secrets accidently commited to project github (trufflehog
   + SCA - check external dependencies/libraries used by the project have no known vulnerabilities (safety)
@@ -198,7 +194,9 @@ Docker, docker-compose, Ansible, Tags, Playbooks, Roles, Galaxy, Jenkins, Shared
   + System security audit - analyse at the security posture of the system hosting the application (Lynis)
   + WAF - deploy application with WAF which will filter malicious requests according to OWASP core ruleset (owasp/modsecurity-crs)
 
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-full.png" width="900">
 
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-steps-UI.png" width="900">
 
 
 
