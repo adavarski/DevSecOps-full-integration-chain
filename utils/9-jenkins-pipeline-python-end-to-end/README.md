@@ -61,12 +61,12 @@ cd DevSecOps-pipeline-python
 
 - Using AWS EC2 jenkins environment (jenkins instance on AWS EC2):
 
-Edit [Jenkinsfile](https://github.com/adavarski/DevSecOps-pipeline-python/blob/main/Jenkinsfile): uncomment lines
+Edit [Jenkinsfile](https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/Jenkinsfile): uncomment lines
 ```			
 // def seleniumIp = env.SeleniumPrivateIp
 // sh "python3 ~/authDAST.py $seleniumIp ${testenv} $WORKSPACE/$BUILD_TAG/DAST_results.html"
 ```
-Edit [setup-ubuntu.sh](https://github.com/adavarski/DevSecOps-pipeline-python/blob/main/setup-ubuntu.sh): uncomment lines
+Edit [setup-ubuntu.sh](https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/setup-ubuntu.sh): uncomment lines
 ```
 #apt-get update
 #apt install docker.io -y
