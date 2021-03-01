@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+body {background-color: black;}
+pre {
+	font-weight: normal;
+	color: #bbb;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+b {font-weight: normal}
+b.BOLD {color: #fff}
+b.ITA {font-style: italic}
+b.UND {text-decoration: underline}
+b.STR {text-decoration: line-through}
+b.UNDSTR {text-decoration: underline line-through}
+b.BLK {color: #000000}
+b.RED {color: #aa0000}
+b.GRN {color: #00aa00}
+b.YEL {color: #aa5500}
+b.BLU {color: #0000aa}
+b.MAG {color: #aa00aa}
+b.CYN {color: #00aaaa}
+b.WHI {color: #aaaaaa}
+b.HIK {color: #555555}
+b.HIR {color: #ff5555}
+b.HIG {color: #55ff55}
+b.HIY {color: #ffff55}
+b.HIB {color: #5555ff}
+b.HIM {color: #ff55ff}
+b.HIC {color: #55ffff}
+b.HIW {color: #ffffff}
+b.BBLK {background-color: #000000}
+b.BRED {background-color: #aa0000}
+b.BGRN {background-color: #00aa00}
+b.BYEL {background-color: #aa5500}
+b.BBLU {background-color: #0000aa}
+b.BMAG {background-color: #aa00aa}
+b.BCYN {background-color: #00aaaa}
+b.BWHI {background-color: #aaaaaa}
+</style>
+</head>
+<body>
+<pre>
+<b class=HIW>[ Lynis 2.7.5 ]</b>
+
+################################################################################
+  Lynis comes with ABSOLUTELY NO WARRANTY. This is free software, and you are
+  welcome to redistribute it under the terms of the GNU General Public License.
+  See the LICENSE file for details about using this software.
+
+  2007-2019, CISOfy - https://cisofy.com/lynis/
+  Enterprise support available (compliance, plugins, interface and tools)
+################################################################################
+
+
+[+] <b class=HIY>Initializing program</b>
+------------------------------------
+  - Detecting OS...                                           [ <b class=HIG>DONE</b> ]
+  - Checking profiles...                                      [ <b class=HIG>DONE</b> ]
+
+  ---------------------------------------------------
+  Program version:           2.7.5
+  Operating system:          Linux
+  Operating system name:     Debian
+  Operating system version:  10.8
+  Kernel version:            5.0.0
+  Hardware platform:         x86_64
+  Hostname:                  daaeb5e00ea6
+  ---------------------------------------------------
+  Profiles:                  /var/jenkins_home/lynis/default.prf
+  Log file:                  /tmp/lynis.log
+  Report file:               /tmp/lynis-report.dat
+  Report version:            1.0
+  Plugin directory:          ./plugins
+  ---------------------------------------------------
+  Auditor:                   [Not Specified]
+  Language:                  en
+  Test category:             all
+  Test group:                all
+  ---------------------------------------------------
+  - Program update status...                                  [ <b class=HIY>SKIPPED</b> ]
+
+      ===============================================================================
+        <b class=CYN>Lynis update available</b>
+      ===============================================================================
+
+        <b class=HIY>Current version is more than 4 months old</b>
+
+        <b class=HIW>Please update to the latest version.</b>
+        New releases include additional features, bug fixes, tests, and baselines.
+
+        Download the latest version:
+
+        Packages (DEB/RPM) -  https://packages.cisofy.com
+        Website (TAR)      -  https://cisofy.com/downloads/
+        GitHub (source)    -  https://github.com/CISOfy/lynis
+
+      ===============================================================================
+
+
+[+] <b class=HIY>System Tools</b>
+------------------------------------
+  - Scanning available tools...                              
+  - Checking system binaries...                              
+
+[+] <b class=HIM>Helper: audit_dockerfile</b>
+------------------------------------
+  File to audit = /var/jenkins_home/workspace/DevSecOps-pipeline-python/gossip-world/deployments/Dockerfile 
+
+[+] <b class=HIY>Image</b>
+------------------------------------
+  Found image:                                                [ python:3 ]
+  Unknown image                                              
+
+[+] <b class=HIY>Basics</b>
+------------------------------------
+  CMD                                                         [ python ]
+
+[+] <b class=HIY>Software</b>
+------------------------------------
+
+[+] <b class=HIY>Downloads</b>
+------------------------------------
+  No files seems to be downloaded in this Dockerfile         
+
+[+] <b class=HIY>Permissions</b>
+------------------------------------
+
+================================================================================
+
+  -[ <b class=HIW>Lynis 2.7.5 Results</b> ]-
+
+  <b class=HIR>Warnings</b> (3):
+  <b class=HIW>----------------------------</b>
+  <b class=HIR>!</b> No maintainer found. Unclear who created this file. [dockerfile] 
+      https://cisofy.com/lynis/controls/dockerfile/
+
+  <b class=HIR>!</b> No ENTRYPOINT defined in Dockerfile. [dockerfile] 
+      https://cisofy.com/lynis/controls/dockerfile/
+
+  <b class=HIR>!</b> No user declared in Dockerfile. Container will execute command as root [dockerfile] 
+      https://cisofy.com/lynis/controls/dockerfile/
+
+  <b class=HIY>Suggestions</b> (1):
+  <b class=HIW>----------------------------</b>
+  <b class=HIY>*</b> This release is more than 4 months old. Consider upgrading [LYNIS] 
+      <b class=WHI>https://cisofy.com/lynis/controls/LYNIS/</b>
+
+  <b class=CYN>Follow-up</b>:
+  <b class=HIW>----------------------------</b>
+  <b class=HIW>-</b> Show details of a test (lynis show details TEST-ID)
+  <b class=HIW>-</b> Check the logfile for all details (less /tmp/lynis.log)
+  <b class=HIW>-</b> Read security controls texts (https://cisofy.com)
+  <b class=HIW>-</b> Use --upload to upload data to central system (Lynis Enterprise users)
+
+================================================================================
+
+  <b class=HIW>Lynis security scan details</b>:
+
+  <b class=CYN>Hardening index</b> : <b class=HIW>1</b> [<b class=HIR>#</b>                   ]
+  <b class=CYN>Tests performed</b> : <b class=HIW>1</b>
+  <b class=CYN>Plugins enabled</b> : <b class=HIW>Skipped</b>
+
+  <b class=HIW>Components</b>:
+  - Firewall               [<b class=HIR>X</b>]
+  - Malware scanner        [<b class=HIR>X</b>]
+
+  <b class=HIY>Lynis modules</b>:
+  - Compliance status      [<b class=HIY>?</b>]
+  - Security audit         [<b class=HIG>V</b>]
+  - Vulnerability scan     [<b class=HIG>V</b>]
+
+  <b class=HIY>Files</b>:
+  - Test and debug information      : <b class=HIW>/tmp/lynis.log</b>
+  - Report data                     : <b class=HIW>/tmp/lynis-report.dat</b>
+
+================================================================================
+
+  <b class=HIW>Lynis</b> 2.7.5
+
+  Auditing, system hardening, and compliance for UNIX-based systems
+  (Linux, macOS, BSD, and others)
+
+  2007-2019, CISOfy - https://cisofy.com/lynis/
+  <b class=HIW>Enterprise support available (compliance, plugins, interface and tools)</b>
+
+================================================================================
+
+  <b class="BBLU">[TIP]</b>: <b style="color:#5555ff;">Enhance Lynis audits by adding your settings to custom.prf (see /var/jenkins_home/lynis/default.prf for all settings)</b>
+
+</pre>
+</body>
+</html>

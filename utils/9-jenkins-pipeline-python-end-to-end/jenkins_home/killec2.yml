@@ -1,0 +1,15 @@
+---
+- name: Gather remote host info
+  hosts: tstlaunched
+  remote_user: ubuntu
+  vars:
+    region: "eu-west-2"
+  tasks:
+    - name: get remote instance metadata
+      ec2_metadata_facts:
+    - name: destroy the instance with instance id
+      ec2:
+           state: 'absent'
+           region: "{{ region }}"
+           instance_ids: "{{ ansible_ec2_instance_id }}"
+      delegate_to: localhost
