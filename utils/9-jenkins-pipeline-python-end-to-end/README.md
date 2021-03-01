@@ -233,6 +233,6 @@ hromeDriver was started successfully.
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-workspace.png" width="500">
 
-[Example J.pipeline & Reports output](https://github.com/adavarski/DevSecOps-pipeline-python/tree/main/reports)
+[Example J.pipeline & Reports output](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/9-jenkins-pipeline-python-end-to-end/reports)
 
 
