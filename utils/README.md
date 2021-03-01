@@ -43,6 +43,8 @@
 
 <img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-steps-UI.png" width="900">
 
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-workspace.png" width="900">
+
   + Checkout project - check out python application project repository with XSS vulnerability (https://github.com/adavarski/Python-app-DevSecOps-XSS)
   + git secret check - check there is no password/token/keys/secrets accidently commited to project github (trufflehog
   + SCA - check external dependencies/libraries used by the project have no known vulnerabilities (safety)
