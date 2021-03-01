@@ -20,7 +20,8 @@
 
   + Automating Web Application Security Testing Using OWASP ZAP
   + Vulnerability Scanning with Nessus
-  + Security Hardening for Applications and Networks
+  + Web Application Security Scanning (Nikto, etc.)
+  + Security Hardening for Applications and Networks (Lynix, etc.) 
 
 + [Ansible DevSecOps continuous security scanning for docker containers services/tools](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/5-ansible-devsecops-docker-utils)
 
