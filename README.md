@@ -11,7 +11,7 @@ Jenkins Pipelines, Docker, k8s, Ansible, Clair, Nessus, Nmap NSE, OpenSCAP, OWAS
 - Configuration Managment: Ansible 
 - Source Code Managment : GitLab
 - Scheduling : Jenkins
-- Security: Clair, Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP, Gauntlt, etc.
+- Security: Clair, Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP, Nikto, Lynis, Bandit, Gauntlt, etc.
 - Performance Testing: JMeter
 - Notification: Slack, Email
 
