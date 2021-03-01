@@ -1,7 +1,7 @@
 
 ## DevSecOps full integration chain 
 
-Jenkins Pipelines, Docker, k8s, Ansible, Clair, Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP, Gauntlt, etc.
+Jenkins Pipelines, Docker, k8s, Ansible, Clair, Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP, Nikto, Lynis, Bandit, Gauntlt, etc.
 
 ### Utils/Tools
 - Cloud Production Infrastructure: AWS environment (IaC: Terraform/Ansible)
