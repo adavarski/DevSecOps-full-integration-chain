@@ -9,7 +9,7 @@ Jenkins Pipelines, Docker, k8s, Ansible, Clair, Nessus, Nmap NSE, OpenSCAP, OWAS
 - k8s Infrastructure: Development (minikube)/Production (AWS:KOPS) (IaC: k8s manifests/helm charts/k8s operators)
 - Container Engine : Docker 
 - Configuration Managment: Ansible 
-- Source Code Managment : GitLab
+- Source Code Managment : GitLab/GitHub
 - Scheduling : Jenkins
 - Security: Clair, Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP, Nikto, Lynis, Bandit, Gauntlt, etc.
 - Performance Testing: JMeter
