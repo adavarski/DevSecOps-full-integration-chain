@@ -40,7 +40,7 @@
   Jenkins instance/environment hosted on AWS EC2 (Ubuntu 18.04) or local environment (on your laptop/workstation/on-prem ubuntu server).
   
   + Checkout project - check out python application project repository with XSS vulnerability (https://github.com/adavarski/Python-app-DevSecOps-XSS)
-  + git secret check - check there is no password/token/keys/secrets accidently commited to project github (trufflehog
+  + git secret check - check there is no password/token/keys/secrets accidently commited to project github (trufflehog)
   + SCA - check external dependencies/libraries used by the project have no known vulnerabilities (safety)
   + SAST - static analysis of the application source code for exploits, bugs, vulnerabilites (Bandit)
   + Container audit - audit the container that is used to deploy the python application (Lynis)
