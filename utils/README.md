@@ -36,7 +36,9 @@
   + Docker Bandit SAST (Static Application Security Testing) for Python projects and DevSecOps pipelines (python)
   + Docker container for clair-scanner and for integration into a DevSecOps pipelines (docker containers vulnerability scan)
 
-+ [A Jenkins end-to-end DevSecOps pipeline for Python web application (docker based)](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/9-jenkins-pipeline-python-end-to-end)
++ [Example: A Jenkins end-to-end DevSecOps pipeline for Python web application (docker based)](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/9-jenkins-pipeline-python-end-to-end)
+  Jenkins instance/environment hosted on AWS EC2 (Ubuntu 18.04) or local environment (on your laptop/workstation/on-prem ubuntu server).
+  
   + Checkout project - check out python application project repository with XSS vulnerability (https://github.com/adavarski/Python-app-DevSecOps-XSS)
   + git secret check - check there is no password/token/keys/secrets accidently commited to project github (trufflehog
   + SCA - check external dependencies/libraries used by the project have no known vulnerabilities (safety)
