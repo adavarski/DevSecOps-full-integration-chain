@@ -2,7 +2,7 @@
 
 A Jenkins end-to-end DevSecOps pipeline for Python web application.
 
-<img src="https://github.com/adavarski/DevSecOps-pipeline-python/blob/main/pictures/DevSecOps-pipeline-full.png" width="900">
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-full.png" width="900">
 
 Jenkins instance/environment hosted on AWS EC2 (Ubuntu 18.04) or local environment (on your laptop/workstation/on-prem ubuntu server).
 
@@ -116,9 +116,9 @@ https://localhost:8080
 
 ## Demo
 
-<img src="https://github.com/adavarski/DevSecOps-pipeline-python/blob/main/pictures/DevSecOps-pipeline-steps-UI.png" width="900">
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-pipeline-steps-UI.png" width="900">
 
-<img src="https://github.com/adavarski/DevSecOps-pipeline-python/blob/main/pictures/DevSecOps-ec2.png" width="900">
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-ec2.png" width="900">
 
 Debugging (authDAST.py missing html report):
 ```
@@ -231,7 +231,7 @@ hromeDriver was started successfully.
 ```
 ### Reports
 
-<img src="https://github.com/adavarski/DevSecOps-pipeline-python/blob/main/pictures/DevSecOps-workspace.png" width="500">
+<img src="https://github.com/adavarski/DevSecOps-full-integration-chain/blob/main/utils/9-jenkins-pipeline-python-end-to-end/pictures/DevSecOps-workspace.png" width="500">
 
 [Example J.pipeline & Reports output](https://github.com/adavarski/DevSecOps-pipeline-python/tree/main/reports)
 
