@@ -8,12 +8,12 @@ Jenkins instance/environment hosted on AWS EC2 (Ubuntu 18.04) or local environme
 
 Features:
 
-- [x] Select appropriate security tools and sample python project
-- [x] Set up Jenkins server using docker (Dockerfile) and pipeline as code (Jenkinsfile) to run the checks
-- [x] Use ansible to create AWS ec2 test instance, configure the environment, and interact with it
-- [x] Hook up the web-app with modsecurity providing WAF, reverse proxy capabilities
-- [x] Bootstrap with Jenkins API/configfile to setup and automatically create the pipeline job
-- [x] Carry out authenticated DAST scan on the python web app 
+- Select appropriate security tools and sample python project
+- Set up Jenkins server using docker (Dockerfile) and pipeline as code (Jenkinsfile) to run the checks
+- Use ansible to create AWS ec2 test instance, configure the environment, and interact with it
+- Hook up the web-app with modsecurity providing WAF, reverse proxy capabilities
+- Bootstrap with Jenkins API/configfile to setup and automatically create the pipeline job
+- Carry out authenticated DAST scan on the python web app 
 
 
 
