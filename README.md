@@ -135,10 +135,6 @@ Continuous Delivery on the **”Master”** branch:
 
 ------------
 
-### Technical word
-
-Docker, docker-compose, Ansible, Tags, Playbooks, Roles, Galaxy, Jenkins, Shared-library, Pipeline, Notification, linter, DevSecOps, Clair, Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP, Gauntlt, etc.
-
 
 ### Reference repository: 
 
