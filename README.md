@@ -153,7 +153,7 @@ Continuous Delivery on the **”Master”** branch:
   + Deploy Application in production
 
 
-+ [Ansible DevOps services/tools](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/3-ansible-devops-utils)
++ [Ansible DevOps CI/CD services/tools](https://github.com/adavarski/DevSecOps-full-integration-chain/tree/main/utils/3-ansible-devops-utils)
   + GitLab 
   + Jenkins
   + Ansible Tower
