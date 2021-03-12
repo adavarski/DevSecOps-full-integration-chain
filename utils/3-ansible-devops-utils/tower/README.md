@@ -1,4 +1,4 @@
-TODO: make ansible playbook 
+TODO: make ansible playbook/roles: AWX deploy
 
 #### CI/CD : via Ansible Tower (AWX: docker-compose based install) 
 
