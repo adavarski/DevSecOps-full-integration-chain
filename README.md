@@ -79,10 +79,7 @@ Note. k8s environment (development: minikube/production: AWS-KOPS)
   + Pentest Scans/Attacks with Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP
     + Execute attack/security scans scenarios to identify vulnerabilities in our application using Nessus, Nmap NSE, OpenSCAP, OWASP Dependency-Check, OWASP ZAP
   + Attack generation with Gauntlt:
-    + Execute attack scenarios to identify vulnerabilities in our application :
-      + xss attack
-      + curl attack
-      + etc.
+    + Execute attack scenarios to identify vulnerabilities in our application (xss attack;curl attack;etc.)
 
 ### Workflow
 
